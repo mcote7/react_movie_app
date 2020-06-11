@@ -6,14 +6,11 @@ class Movies extends Component {
     movies: getMovies()
   };
 
-    handleDelete = movie => {
-      const removeMov = this.state.movies.filter(mov=> mov._id !== mov._id)
-      this.setState(removeMov);
+  handleDelete = movie => {
+
   };
 
-  
   render() {
-    
     return (
     <div className="col">
       <p>Showing {this.state.movies.length} movies in the database</p>
@@ -24,19 +21,22 @@ class Movies extends Component {
             <th>Genre:</th>
             <th>Stock:</th>
             <th>Rate:</th>
-            <th>&#128128;</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          {this.state.movies.map((mov, index) =>
+          {this.state.movies.sort((a, b) => (a.title > b.title) ? 1 : -1).map((mov, index) =>
           <tr key={index}>
-              <td>{mov.title}</td>
-              <td>{mov.genre.name}</td>
-              <td>{mov.numberInStock}</td>
-              <td>{mov.dailyRentalRate}</td>
-              <td><button className="btn btn-danger btn-sm" onClick={()=> this.handleDelete(mov._id)}>delete</button></td>
+            <td>{mov.title}</td>
+            <td>{mov.genre.name}</td>
+            <td>{mov.numberInStock}</td>
+            <td>{mov.dailyRentalRate}</td>
+            <td>
+              <button className="btn btn-danger btn-sm" onClick={this.handleDelete}>
+              <span role="img" aria-label="img">&#128128;</span></button>
+            </td>
           </tr>
-            )}
+          )}
         </tbody>
       </table>
     </div>
