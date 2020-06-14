@@ -15,6 +15,6 @@ body {
 .mike {
   color: red;
 }
-/* .page-link {
-  color: !important;
-} */
+.icon {
+  color: #007bff!important;
+}

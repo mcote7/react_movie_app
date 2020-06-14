@@ -2,10 +2,14 @@ import React, {Component} from 'react';
 import {getMovies} from '../services/fakeMovieService';
 import Like from './common/like';
 import Pagination from './common/pagination';
+import {paginate} from '../utilitys/paginate';
+import {sortTheMovies} from '../utilitys/movieSort';
 
 class Movies extends Component {
   state = { 
-    movies: getMovies()
+    movies: getMovies(),
+    currentPage: 1,
+    pageSize: 4
   };
 
   handleDelete = movie => {
@@ -17,7 +21,7 @@ class Movies extends Component {
     this.setState({movies: ""});
   };
 
-  handleLike = (movie) => {
+  handleLike = movie => {
     console.log("like clicked", movie)
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
@@ -26,25 +30,32 @@ class Movies extends Component {
     this.setState({movies})
   };
 
+  handlePageChange = page => {
+    console.log("page#",page)
+    this.setState({currentPage: page});
+  };
+
   render() {
-    const { length: count} = this.state.movies;
+    const {length: count} = this.state.movies;
+    const {pageSize, currentPage, movies: allMovies} = this.state;
+    const newMoviesList = sortTheMovies(allMovies);
     if(count === 0) {
       return(
-        <div className="col">
-          <div className="row ml-1">
-            <a className="badge badge-pill badge-light ml-3 mt-2 cote" href="/">
-            we are currently <span className="mike">sold out</span> ,
-            &nbsp;&nbsp;&nbsp;&nbsp;go back&nbsp;&rarr;</a>
-          </div>
-        </div>
+        <a className="badge badge-pill badge-light ml-3 mt-2 cote" href="/">
+        we are currently <span className="mike">sold out</span> ,
+        &nbsp;&nbsp;&nbsp;&nbsp;go back&nbsp;&rarr;</a>
       );
     }
+    const movies = paginate(newMoviesList, currentPage, pageSize);
     return (
     <div className="col">
-      <div className="row ml-1">
-        <button className="btn btn-danger btn-sm" onClick={() => this.handleDeleteAll()}>
-        <span role="img" aria-label="img">&#128128;</span>all</button>
-        <p className="ml-4">Showing {this.state.movies.length} movies in the database</p>
+      <div className="row ml-1 mb-2">
+        <div className="col-11 p-0">
+          <h5 className="">We have {newMoviesList.length} total movies in the database</h5>
+          <p className="">Showing {movies.length} on page {currentPage}</p>
+        </div>
+        <div className="col-1">
+        </div>
       </div>
       <table className="table">
         <thead>
@@ -54,12 +65,15 @@ class Movies extends Component {
             <th>Stock</th>
             <th>Rate</th>
             <th>Like</th>
-            <th>Remove</th>
+            <th>
+              <button className="btn btn-danger btn-sm" style={{display: "grid"}}
+              onClick={() => this.handleDeleteAll()}>
+              <span role="img" aria-label="img">&#128128;</span>*</button>
+            </th>
           </tr>
         </thead>
         <tbody>
-          {count > 0 && this.state.movies.sort((a, b) => (a.title > b.title) ? 1 : -1)
-          .map((m) =>
+          {count > 0 && movies.map((m) =>
           <tr key={m._id}>
             <td>{m.title}</td>
             <td>{m.genre.name}</td>
@@ -76,7 +90,8 @@ class Movies extends Component {
           )}
         </tbody>
       </table>
-      <Pagination/>
+      <Pagination itemsCount={count} pageSize={pageSize}
+      currentPage={currentPage} onPageChange={this.handlePageChange}/>
     </div>
     );
   }
