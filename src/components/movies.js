@@ -56,13 +56,15 @@ class Movies extends Component {
     const {length: count} = this.state.movies;
     const {pageSize, currentPage, movies: allMovies} = this.state;
     const newMoviesList = sortTheMovies(allMovies);
+
     if(count === 0) {
       return(
         <a className="badge badge-pill badge-light ml-3 mt-2 cote" href="/">
-        we are currently <span className="mike">sold out</span> ,
-        &nbsp;&nbsp;&nbsp;&nbsp;go back&nbsp;&rarr;</a>
+        we are currently&nbsp;&nbsp;&nbsp;<span role="img" aria-label="so" className="mike">
+        &#x1f595; sold out &#x1f595;</span>&nbsp;&nbsp;&nbsp;go back&nbsp;&rarr;</a>
       );
     }
+
     const movies = paginate(newMoviesList, currentPage, pageSize);
     const movLen = movies.length;
     // console.log("paginated movies-", movies)
