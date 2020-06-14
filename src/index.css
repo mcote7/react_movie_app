@@ -18,3 +18,8 @@ body {
 .icon {
   color: #007bff!important;
 }
+.fixed {
+  position: fixed;
+  top: 70%;
+  right: 15.8%;
+}

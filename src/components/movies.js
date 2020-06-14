@@ -12,8 +12,11 @@ class Movies extends Component {
     pageSize: 4
   };
 
-  handleDelete = movie => {
+  handleDelete = (movie, movLen, currentPage) => {
     const movies = this.state.movies.filter(m => m._id !== movie._id);
+    if(movLen === 1) {
+      this.setState({ movies, currentPage: currentPage -= 1});
+    }
     this.setState({ movies });
   };
 
@@ -35,6 +38,20 @@ class Movies extends Component {
     this.setState({currentPage: page});
   };
 
+  handleNext = (page, pagesCount) => {
+    if(page < pagesCount) {
+      this.setState({currentPage: page += 1});
+    }
+    this.setState({currentPage: page});
+  };
+
+  handlePrev = (page) => {
+    if(page > 1) {
+      this.setState({currentPage: page -= 1});
+    }
+    this.setState({currentPage: page});
+  };
+
   render() {
     const {length: count} = this.state.movies;
     const {pageSize, currentPage, movies: allMovies} = this.state;
@@ -47,7 +64,11 @@ class Movies extends Component {
       );
     }
     const movies = paginate(newMoviesList, currentPage, pageSize);
+    const movLen = movies.length;
+    // console.log("paginated movies-", movies)
+    // console.log("paginated movies-length", movLen)
     return (
+    <div>
     <div className="col">
       <div className="row ml-1 mb-2">
         <div className="col-11 p-0">
@@ -83,15 +104,17 @@ class Movies extends Component {
               <Like liked={m.liked} onLike={() => this.handleLike(m)}/>
             </td>
             <td>
-              <button className="btn btn-danger btn-sm" onClick={() => this.handleDelete(m)}>
+              <button className="btn btn-danger btn-sm" onClick={() => this.handleDelete(m, movLen, currentPage)}>
               <span role="img" aria-label="img">&#128128;</span></button>
             </td>
           </tr>
           )}
         </tbody>
       </table>
+    </div>
       <Pagination itemsCount={count} pageSize={pageSize}
-      currentPage={currentPage} onPageChange={this.handlePageChange}/>
+      currentPage={currentPage} onPageChange={this.handlePageChange}
+      onPagePrev={this.handlePrev} onPageNext={this.handleNext}/>
     </div>
     );
   }
