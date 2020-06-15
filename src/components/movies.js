@@ -6,6 +6,7 @@ import Pagination from './common/pagination';
 import {paginate} from '../utilitys/paginate';
 import {sortTheMovies} from '../utilitys/movieSort';
 import ListGroup from './common/listGroup';
+import InfoSideBar from './common/infoSideBar';
 
 class Movies extends Component {
   state = { 
@@ -61,14 +62,12 @@ class Movies extends Component {
   };
 
   handleGenreSelect = genre => {
+    this.setState({selectedGenre: genre, currentPage: 1})
     console.log("Genre:", genre)
   };
 
   render() {
     const {length: count} = this.state.movies;
-    const {pageSize, currentPage, movies: allMovies} = this.state;
-    const newMoviesList = sortTheMovies(allMovies);
-
     if(count === 0) {
       return(
         <a className="badge badge-pill badge-light ml-5 mt-5 cote" href="/">
@@ -77,24 +76,36 @@ class Movies extends Component {
       );
     }
 
-    const movies = paginate(newMoviesList, currentPage, pageSize);
+    const {pageSize, currentPage, selectedGenre, movies: allMovies} = this.state;
+
+    const newMoviesList = sortTheMovies(allMovies);
+    const filtered = selectedGenre
+    ? newMoviesList.filter(m => m.genre._id === selectedGenre._id)
+    : newMoviesList;
+    const movies = paginate(filtered, currentPage, pageSize);
     const movLen = movies.length;
+    const filteredLen = filtered.length;
     // console.log("paginated movies-", movies)
     // console.log("paginated movies-length", movLen)
     return (
     <div>
       <div className="row mt-3">
-        <div className="col">
+        <div className="col-10">
           <div className="row mb-2">
-            <div className="col-2">
-              <ListGroup items={this.state.genres} onItemSelect={this.handleGenreSelect}/>
+            <div className="col-3">
+              <ListGroup items={this.state.genres}
+              onItemSelect={this.handleGenreSelect} selectedItem={this.state.selectedGenre}/>
             </div>
             <div className="col-8 p-0">
               <h1 className="mb-2">Welcome, hey there buddy</h1>
-              <h5 className="">We have {newMoviesList.length} total movies in the database</h5>
-              <p className="">Showing {movies.length} on page {currentPage}</p>
+                <h5 className="">We have {newMoviesList.length} total movies in the database</h5>
+                  {filteredLen > 0 ? <p className="">Showing {movLen > 1
+                  ? <span>{movLen} movie's</span>
+                  :<span>{movLen} movie</span> }&nbsp;
+                  {(filteredLen / pageSize -1) > 0 ? <span>on page {currentPage}</span> : ""}</p> : ""}
             </div>
           </div>
+
           <table className="table">
             <thead>
               <tr>
@@ -106,10 +117,11 @@ class Movies extends Component {
                 <th>
                   <button className="btn btn-danger btn-sm" style={{display: "grid"}}
                   onClick={() => this.handleDeleteAll()}>
-                  <span role="img" aria-label="img">&#128128;</span>*</button>
+                  <span role="img" aria-label="img">&#128128;</span></button>
                 </th>
               </tr>
             </thead>
+
             <tbody>
               {count > 0 && movies.map((m) =>
               <tr key={m._id}>
@@ -121,17 +133,21 @@ class Movies extends Component {
                   <Like liked={m.liked} onLike={() => this.handleLike(m)}/>
                 </td>
                 <td>
-                  <button className="btn btn-danger btn-sm" onClick={() => this.handleDelete(m, movLen, currentPage)}>
+                  <button className="btn btn-danger btn-sm" 
+                  onClick={() => this.handleDelete(m, movLen, currentPage, filteredLen)}>
                   <span role="img" aria-label="img">&#128128;</span></button>
                 </td>
               </tr>
               )}
             </tbody>
           </table>
+
         </div>
+        <InfoSideBar/>
       </div>
+
       <div className="row">
-          <Pagination itemsCount={count} pageSize={pageSize}
+          <Pagination itemsCount={filteredLen} pageSize={pageSize}
           currentPage={currentPage} onPageChange={this.handlePageChange}
           onPagePrev={this.handlePrev} onPageNext={this.handleNext}/>
       </div>

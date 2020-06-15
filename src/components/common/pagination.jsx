@@ -35,3 +35,5 @@ Pagination.propTypes = {
   onPagePrev: PropTypes.func.isRequired
 };
 export default Pagination;
+
+// npm i bootatrap font-awesome
