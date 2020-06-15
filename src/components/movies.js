@@ -7,6 +7,7 @@ import {paginate} from '../utilitys/paginate';
 import {sortTheMovies} from '../utilitys/movieSort';
 import ListGroup from './common/listGroup';
 import InfoSideBar from './common/infoSideBar';
+import SoldOut from './common/soldOut'
 
 class Movies extends Component {
   state = { 
@@ -17,7 +18,8 @@ class Movies extends Component {
   };
 
   componentDidMount() {
-    this.setState({movies: getMovies(), genres: getGenres()});
+    const genres = [{ name: "All Genres"},...getGenres()];
+    this.setState({movies: getMovies(), genres});
     // console.log("all genres:", genres)
   }
 
@@ -70,16 +72,14 @@ class Movies extends Component {
     const {length: count} = this.state.movies;
     if(count === 0) {
       return(
-        <a className="badge badge-pill badge-light ml-5 mt-5 cote" href="/">
-        we are currently&nbsp;&nbsp;&nbsp;<span role="img" aria-label="so" className="mike">
-        &#x1f595; sold out &#x1f595;</span>&nbsp;&nbsp;&nbsp;go back&nbsp;&rarr;</a>
+        <SoldOut/>
       );
     }
 
     const {pageSize, currentPage, selectedGenre, movies: allMovies} = this.state;
 
     const newMoviesList = sortTheMovies(allMovies);
-    const filtered = selectedGenre
+    const filtered = selectedGenre && selectedGenre._id
     ? newMoviesList.filter(m => m.genre._id === selectedGenre._id)
     : newMoviesList;
     const movies = paginate(filtered, currentPage, pageSize);
@@ -93,16 +93,17 @@ class Movies extends Component {
         <div className="col-10">
           <div className="row mb-2">
             <div className="col-3">
-              <ListGroup items={this.state.genres}
+              <ListGroup items={this.state.genres} 
               onItemSelect={this.handleGenreSelect} selectedItem={this.state.selectedGenre}/>
             </div>
-            <div className="col-8 p-0">
+            <div className="col-7 p-0">
               <h1 className="mb-2">Welcome, hey there buddy</h1>
                 <h5 className="">We have {newMoviesList.length} total movies in the database</h5>
-                  {filteredLen > 0 ? <p className="">Showing {movLen > 1
-                  ? <span>{movLen} movie's</span>
+                  {filteredLen > 0 ? <p className="len-data">Showing&nbsp; {movLen > 1
+                  ? <span>{movLen} &nbsp;movie's</span>
                   :<span>{movLen} movie</span> }&nbsp;
-                  {(filteredLen / pageSize -1) > 0 ? <span>on page {currentPage}</span> : ""}</p> : ""}
+                  {(filteredLen / pageSize -1) > 0 ? <span>on page&nbsp; {currentPage} 
+                  &nbsp;&nbsp;of&nbsp; {(Math.ceil(filteredLen / pageSize))} .</span> : ""}</p> : ""}
             </div>
           </div>
 
@@ -134,7 +135,7 @@ class Movies extends Component {
                 </td>
                 <td>
                   <button className="btn btn-danger btn-sm" 
-                  onClick={() => this.handleDelete(m, movLen, currentPage, filteredLen)}>
+                  onClick={() => this.handleDelete(m, movLen, currentPage)}>
                   <span role="img" aria-label="img">&#128128;</span></button>
                 </td>
               </tr>

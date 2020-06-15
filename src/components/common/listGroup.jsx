@@ -12,7 +12,8 @@ const ListGroup = (props) => {
     {items && items.map(i => (
       <li key={i[valueProperty]} onClick={() => onItemSelect(i)}
       className={i === selectedItem ? "list-group-item active" : "list-group-item not-active"}>{i[textProperty]}
-      <span style={{float: "right"}}>( 0 )</span></li>
+      <span style={{float: "right"}}><i className={i === selectedItem
+      ? "fa fa-chevron-circle-left" : "fa fa-chevron-circle-right"} aria-hidden="true"></i></span></li>
     ))}
   </ul>
   );
