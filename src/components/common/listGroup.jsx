@@ -8,7 +8,6 @@ const ListGroup = (props) => {
     selectedItem} = props;
   return (
   <ul className="list-group">
-    {/* <li className="list-group-item list-group-item-action">All Genres</li> */}
     {items && items.map(i => (
       <li key={i[valueProperty]} onClick={() => onItemSelect(i)}
       className={i === selectedItem ? "list-group-item active" : "list-group-item not-active"}>{i[textProperty]}

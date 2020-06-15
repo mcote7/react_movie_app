@@ -18,15 +18,21 @@ class Movies extends Component {
   };
 
   componentDidMount() {
-    const genres = [{ name: "All Genres"},...getGenres()];
+    const genres = [{ name: "All Genres", _id: "1"},...getGenres()];
     this.setState({movies: getMovies(), genres});
     // console.log("all genres:", genres)
   }
 
   handleDelete = (movie, movLen, currentPage) => {
+    const allGenres = this.state.genres.filter(g => g.name === "All Genres");
+    // console.log("all-genres", allGenres)
+    // console.log("current-page", currentPage)
     const movies = this.state.movies.filter(m => m._id !== movie._id);
-    if(movLen === 1) {
+    if(movLen === 1 && currentPage > 1) {
       this.setState({ movies, currentPage: currentPage -= 1});
+    }
+    else if(movLen === 1 && currentPage === 1) {
+      this.setState({ movies, selectedGenre: allGenres});
     }
     this.setState({ movies });
   };
