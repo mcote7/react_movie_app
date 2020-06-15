@@ -6,7 +6,6 @@ class App extends Component {
   render() {
     return (
       <main className="container">
-        <h1 className="ml-3 mb-2">Hey there buddy</h1>
         <Movies/>
       </main>
     );

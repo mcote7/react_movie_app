@@ -18,8 +18,9 @@ body {
 .icon {
   color: #007bff!important;
 }
-.fixed {
+/* .fixed {
+  position: sticky;
   position: fixed;
-  top: 70%;
-  right: 15.8%;
-}
+  top: 0px;
+  left: 0px;
+} */

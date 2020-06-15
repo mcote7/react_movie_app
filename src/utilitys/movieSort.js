@@ -9,7 +9,7 @@ export function sortTheMovies(movies) {
     }
     theResult.push(mov);
   })
-  console.log("result, the!", theResult)
+  // console.log("result, the!", theResult)
   const allMoviesSorted = theResult.sort((a, b) => (a.title > b.title) ? 1 : -1);
   return allMoviesSorted;
 };
