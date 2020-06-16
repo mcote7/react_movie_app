@@ -4,19 +4,26 @@ body {
   font-family: sans-serif;
 }
 /* ---------------------------------- */
+/* Nav + Footer Color = rgb(236, 238, 250) - r+g if needed */
+/* ---------------------------------- */
 .icon {
   color: #007bff!important;
 }
 .not-active:hover {
-  background-color: rgb(238, 240, 243);
+  background-color: rgb(246, 248, 250);
   cursor: pointer;
 }
 .info-side {
-  cursor: help!important;
-  overflow: auto!important;
+  text-align: center;
+  border-radius: 0.25rem;
+  color: #212529;
+  background-color: rgb(246, 248, 250);
+  border-color: #f8f9fa;
+  cursor: help;
+  overflow: auto;
 }
 .info-side:hover {
-  background-color: rgb(246, 248, 250)!important;
+  background-color: #f8f9fa;
 }
 .len-data {
   border-bottom: solid 1px;
@@ -25,6 +32,9 @@ body {
 }
 .len-data:hover {
   border: none;
+}
+.page-link:hover {
+  background-color: rgb(246, 248, 250)!important;
 }
 
 

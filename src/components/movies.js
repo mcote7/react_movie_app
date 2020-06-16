@@ -1,24 +1,27 @@
 import React, {Component} from 'react';
 import {getMovies} from '../services/fakeMovieService';
-import {getGenres, genres} from '../services/fakeGenreService';
-import Like from './common/like';
-import Pagination from './common/pagination';
+import {getGenres} from '../services/fakeGenreService';
 import {paginate} from '../utilitys/paginate';
 import {sortTheMovies} from '../utilitys/movieSort';
 import ListGroup from './common/listGroup';
+import InfoTopBar from './infoTopBar';
+import MoviesTable from './moviesTable';
 import InfoSideBar from './common/infoSideBar';
-import SoldOut from './common/soldOut'
+import Pagination from './common/pagination';
+import SoldOut from './common/soldOut';
+import _ from 'lodash';
 
 class Movies extends Component {
   state = { 
     movies: [],
     genres: [],
     currentPage: 1,
-    pageSize: 4
+    pageSize: 4,
+    sortColumn: { path: 'title', order: 'asc' }
   };
 
   componentDidMount() {
-    const genres = [{ name: "All Genres", _id: "1"},...getGenres()];
+    const genres = [{ name: "All Genres" },...getGenres()];
     this.setState({movies: getMovies(), genres});
     // console.log("all genres:", genres)
   }
@@ -74,6 +77,19 @@ class Movies extends Component {
     console.log("Genre:", genre)
   };
 
+  handleSort = path => {
+    // console.log("path:", path)
+    const sortColumn = {...this.state.sortColumn};
+    if(sortColumn.path === path) {
+      sortColumn.order = (sortColumn.order === 'asc') ? 'desc' : 'asc';
+    }
+    else {
+      sortColumn.path = path;
+      sortColumn.order = 'asc';
+    }
+    this.setState({ sortColumn })
+  };
+
   render() {
     const {length: count} = this.state.movies;
     if(count === 0) {
@@ -81,14 +97,13 @@ class Movies extends Component {
         <SoldOut/>
       );
     }
-
-    const {pageSize, currentPage, selectedGenre, movies: allMovies} = this.state;
-
+    const {pageSize, currentPage, selectedGenre, movies: allMovies, sortColumn} = this.state;
     const newMoviesList = sortTheMovies(allMovies);
     const filtered = selectedGenre && selectedGenre._id
     ? newMoviesList.filter(m => m.genre._id === selectedGenre._id)
     : newMoviesList;
-    const movies = paginate(filtered, currentPage, pageSize);
+    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
+    const movies = paginate(sorted, currentPage, pageSize);
     const movLen = movies.length;
     const filteredLen = filtered.length;
     // console.log("paginated movies-", movies)
@@ -102,57 +117,15 @@ class Movies extends Component {
               <ListGroup items={this.state.genres} 
               onItemSelect={this.handleGenreSelect} selectedItem={this.state.selectedGenre}/>
             </div>
-            <div className="col-7 p-0">
-              <h1 className="mb-2">Welcome, hey there buddy</h1>
-                <h5 className="">We have {newMoviesList.length} total movies in the database</h5>
-                  {filteredLen > 0 ? <p className="len-data">Showing&nbsp; {movLen > 1
-                  ? <span>{movLen} &nbsp;movie's</span>
-                  :<span>{movLen} movie</span> }&nbsp;
-                  {(filteredLen / pageSize -1) > 0 ? <span>on page&nbsp; {currentPage} 
-                  &nbsp;&nbsp;of&nbsp; {(Math.ceil(filteredLen / pageSize))} .</span> : ""}</p> : ""}
-            </div>
+              <InfoTopBar newMoviesList={newMoviesList} filteredLen={filteredLen}
+              movLen={movLen} pageSize={pageSize} currentPage={currentPage}/>
           </div>
-
-          <table className="table">
-            <thead>
-              <tr>
-                <th>Title</th>
-                <th>Genre</th>
-                <th>Stock</th>
-                <th>Rate</th>
-                <th>Like</th>
-                <th>
-                  <button className="btn btn-danger btn-sm" style={{display: "grid"}}
-                  onClick={() => this.handleDeleteAll()}>
-                  <span role="img" aria-label="img">&#128128;</span></button>
-                </th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {count > 0 && movies.map((m) =>
-              <tr key={m._id}>
-                <td>{m.title}</td>
-                <td>{m.genre.name}</td>
-                <td>{m.numberInStock}</td>
-                <td>{m.dailyRentalRate}</td>
-                <td>
-                  <Like liked={m.liked} onLike={() => this.handleLike(m)}/>
-                </td>
-                <td>
-                  <button className="btn btn-danger btn-sm" 
-                  onClick={() => this.handleDelete(m, movLen, currentPage)}>
-                  <span role="img" aria-label="img">&#128128;</span></button>
-                </td>
-              </tr>
-              )}
-            </tbody>
-          </table>
-
+            <MoviesTable count={count} movies={movies}  movLen={movLen} currentPage={currentPage}
+            onDeleteAll={this.handleDeleteAll} onLike={this.handleLike}
+            onDelete={this.handleDelete} onSort={this.handleSort}/>
         </div>
-        <InfoSideBar/>
+        <InfoSideBar currentPage={currentPage}/>
       </div>
-
       <div className="row">
           <Pagination itemsCount={filteredLen} pageSize={pageSize}
           currentPage={currentPage} onPageChange={this.handlePageChange}
