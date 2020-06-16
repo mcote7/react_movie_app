@@ -1,42 +1,24 @@
 import React, {Component} from 'react';
+import Table from './common/table';
 import Like from './common/like';
 
 class MoviesTable extends Component {
+  columns = [
+    { path: 'title', label: 'Title'},
+    { path: 'genre.name', label: 'Genre'},
+    { path: 'numberInStock', label: 'Stock'},
+    { path: 'dailyRentalRate', label: 'Rate'},
+    { label: 'Like', content: m =>
+    (<Like liked={m.liked} onLike={() => this.props.onLike(m)}/>)},
+    { label: 'Delete', content: m =>
+    (<button className="btn btn-danger btn-sm"
+    onClick={() => this.props.onDelete(m, this.props.movLen, this.props.currentPage)}>
+    <span role="img" aria-label="img">&#128128;</span></button>)}
+  ];
   render() {
-    const { count, movies, movLen,
-      currentPage, onDeleteAll, onLike,
-      onDelete, onSort} = this.props;
+    const { count, movies, sortColumn, onSort } = this.props;
     return (
-      <table className="table">
-      <thead>
-        <tr>
-          <th onClick={() => onSort('title')}>Title</th>
-          <th onClick={() => onSort('genre.name')}>Genre</th>
-          <th onClick={() => onSort('numberInStock')}>Stock</th>
-          <th onClick={() => onSort('dailyRentalRate')}>Rate</th>
-          <th>Like</th>
-          <th onClick={() => onDeleteAll()}>Delete</th>
-        </tr>
-      </thead>
-      <tbody>
-        {count > 0 && movies.map((m) =>
-        <tr key={m._id}>
-          <td><a href="/">{m.title}</a></td>
-          <td>{m.genre.name}</td>
-          <td>{m.numberInStock}</td>
-          <td>{m.dailyRentalRate}</td>
-          <td>
-            <Like liked={m.liked} onLike={() => onLike(m)}/>
-          </td>
-          <td>
-            <button className="btn btn-danger btn-sm" 
-            onClick={() => onDelete(m, movLen, currentPage)}>
-            <span role="img" aria-label="img">&#128128;</span></button>
-          </td>
-        </tr>
-        )}
-      </tbody>
-    </table>
+      <Table columns={this.columns} count={count} data={movies} sortColumn={sortColumn} onSort={onSort}/>
     );
   }
 }

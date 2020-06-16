@@ -1,10 +1,12 @@
 import React from 'react';
 
 const InfoSideBar = props => {
-  const { currentPage } = props;
+  const { currentPage, onDeleteAll } = props;
   return (
     <div className="col-2 pt-3 info-side">
-      <p>Want to go back ?</p>
+      <p className="m-0">Want to go back ?</p>
+      <span onClick={() => onDeleteAll()}
+      style={{fontSize: "xx-small"}}>( delete all )</span>
       <hr/>
       <a href="/">go back here</a>&nbsp;
       <span className="">( {currentPage} )</span>

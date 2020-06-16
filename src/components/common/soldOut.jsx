@@ -14,5 +14,4 @@ const SoldOut = () => {
     </div>
   );
 }
-
 export default SoldOut;

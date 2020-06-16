@@ -45,11 +45,10 @@ class Movies extends Component {
   };
 
   handleLike = movie => {
-    console.log("like clicked", movie)
     const movies = [...this.state.movies];
     const index = movies.indexOf(movie);
     movies[index] = {...movies[index]};
-    movies[index].liked = !movies[index].liked;
+    movies[index].liked = !movies[index].liked
     this.setState({movies})
   };
 
@@ -73,20 +72,12 @@ class Movies extends Component {
   };
 
   handleGenreSelect = genre => {
-    this.setState({selectedGenre: genre, currentPage: 1})
+    this.setState({selectedGenre: genre, currentPage: 1, sortColumn: { path: 'title', order: 'asc' }})
     console.log("Genre:", genre)
   };
 
-  handleSort = path => {
-    // console.log("path:", path)
-    const sortColumn = {...this.state.sortColumn};
-    if(sortColumn.path === path) {
-      sortColumn.order = (sortColumn.order === 'asc') ? 'desc' : 'asc';
-    }
-    else {
-      sortColumn.path = path;
-      sortColumn.order = 'asc';
-    }
+  handleSort = sortColumn => {
+    // console.log("path:", sortColumn)
     this.setState({ sortColumn })
   };
 
@@ -97,7 +88,8 @@ class Movies extends Component {
         <SoldOut/>
       );
     }
-    const {pageSize, currentPage, selectedGenre, movies: allMovies, sortColumn} = this.state;
+    const {pageSize, currentPage, selectedGenre,
+    movies: allMovies, genres, sortColumn} = this.state;
     const newMoviesList = sortTheMovies(allMovies);
     const filtered = selectedGenre && selectedGenre._id
     ? newMoviesList.filter(m => m.genre._id === selectedGenre._id)
@@ -114,24 +106,28 @@ class Movies extends Component {
         <div className="col-10">
           <div className="row mb-2">
             <div className="col-3">
-              <ListGroup items={this.state.genres} 
-              onItemSelect={this.handleGenreSelect} selectedItem={this.state.selectedGenre}/>
+              <ListGroup items={genres} 
+              onItemSelect={this.handleGenreSelect} selectedItem={selectedGenre}/>
             </div>
               <InfoTopBar newMoviesList={newMoviesList} filteredLen={filteredLen}
               movLen={movLen} pageSize={pageSize} currentPage={currentPage}/>
           </div>
-            <MoviesTable count={count} movies={movies}  movLen={movLen} currentPage={currentPage}
-            onDeleteAll={this.handleDeleteAll} onLike={this.handleLike}
-            onDelete={this.handleDelete} onSort={this.handleSort}/>
+            {/* ... */}
+            {filteredLen > 0 ?
+            <MoviesTable count={count} movies={movies}  movLen={movLen}
+            currentPage={currentPage}sortColumn={sortColumn} onLike={this.handleLike}
+            onDelete={this.handleDelete} onSort={this.handleSort}/> : ''}
         </div>
-        <InfoSideBar currentPage={currentPage}/>
+        <InfoSideBar currentPage={currentPage} onDeleteAll={this.handleDeleteAll}/>
       </div>
       <div className="row">
-          <Pagination itemsCount={filteredLen} pageSize={pageSize}
-          currentPage={currentPage} onPageChange={this.handlePageChange}
-          onPagePrev={this.handlePrev} onPageNext={this.handleNext}/>
-      </div>
+        {/* check if here bug */}
+        {filteredLen > 0 ?
+        <Pagination itemsCount={filteredLen} pageSize={pageSize}
+        currentPage={currentPage} onPageChange={this.handlePageChange}
+        onPagePrev={this.handlePrev} onPageNext={this.handleNext}/> : ''}
     </div>
+  </div>
     );
   }
 }
