@@ -2,9 +2,13 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: rgb(245, 245, 245)!important;
 }
-/* ---------------------------------- */
-/* Nav + Footer Color = rgb(236, 238, 250) - r+g if needed */
+main {
+  background-color: white!important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 4px 6px rgba(0,0,0,.2)!important;
+  border-radius: 0.25rem!important;
+}
 /* ---------------------------------- */
 .icon {
   color: #007bff!important;
@@ -18,12 +22,11 @@ body {
   border-radius: 0.25rem;
   color: #212529;
   background-color: rgb(246, 248, 250);
-  border-color: #f8f9fa;
   cursor: help;
   overflow: auto;
 }
 .info-side:hover {
-  background-color: #f8f9fa;
+  background-color: rgb(245, 245, 245);
 }
 .len-data {
   border-bottom: solid 1px;
@@ -32,17 +35,16 @@ body {
 }
 .len-data:hover {
   border: none;
+  background-color: rgb(245, 245, 245);
 }
 .page-link:hover {
   background-color: rgb(246, 248, 250)!important;
 }
-
-
-
-/* ---------------------------------------------------------- */
-/* .fixed {
-  position: sticky;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-} */
+.myNav-top {
+  height: 7.2vh;
+  background-color: #3a3f49!important;;
+}
+.myNav-bottom {
+  height: 92.8vh;
+  background-color: #3a3f49!important;;
+}

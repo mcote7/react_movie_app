@@ -91,11 +91,13 @@ class Movies extends Component {
     const {pageSize, currentPage, selectedGenre,
     movies: allMovies, genres, sortColumn} = this.state;
     const newMoviesList = sortTheMovies(allMovies);
+
     const filtered = selectedGenre && selectedGenre._id
     ? newMoviesList.filter(m => m.genre._id === selectedGenre._id)
     : newMoviesList;
     const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
     const movies = paginate(sorted, currentPage, pageSize);
+    
     const movLen = movies.length;
     const filteredLen = filtered.length;
     // console.log("paginated movies-", movies)
@@ -112,7 +114,6 @@ class Movies extends Component {
               <InfoTopBar newMoviesList={newMoviesList} filteredLen={filteredLen}
               movLen={movLen} pageSize={pageSize} currentPage={currentPage}/>
           </div>
-            {/* ... */}
             {filteredLen > 0 ?
             <MoviesTable count={count} movies={movies}  movLen={movLen}
             currentPage={currentPage}sortColumn={sortColumn} onLike={this.handleLike}
@@ -121,7 +122,6 @@ class Movies extends Component {
         <InfoSideBar currentPage={currentPage} onDeleteAll={this.handleDeleteAll}/>
       </div>
       <div className="row">
-        {/* check if here bug */}
         {filteredLen > 0 ?
         <Pagination itemsCount={filteredLen} pageSize={pageSize}
         currentPage={currentPage} onPageChange={this.handlePageChange}
