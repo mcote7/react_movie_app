@@ -14,3 +14,5 @@ const NavBar = () => {
 };
 
 export default NavBar;
+
+//adding routing
