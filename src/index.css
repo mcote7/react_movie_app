@@ -49,5 +49,9 @@ main {
   background-color: #3a3f49!important;
 }
 .navImg {
-  height: 6vh!important;
+  height: 3vh!important;
+}
+.x:hover {
+  cursor: pointer;
+  color: white!important;
 }
