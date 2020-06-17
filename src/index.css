@@ -42,9 +42,12 @@ main {
 }
 .myNav-top {
   height: 7.2vh;
-  background-color: #3a3f49!important;;
+  background-color: #3a3f49!important;
 }
 .myNav-bottom {
   height: 93vh;
-  background-color: #3a3f49!important;;
+  background-color: #3a3f49!important;
+}
+.navImg {
+  height: 6vh!important;
 }
