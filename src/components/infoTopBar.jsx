@@ -1,7 +1,6 @@
 import React from 'react';
 
-const InfoTopBar = props => {
-  const { count, filteredLen, movLen, pageSize, currentPage } = props;
+const InfoTopBar = ({ count, filteredLen, movLen, pageSize, currentPage }) => {
   return (
   <div className="col-7 p-0">
     <h1 className="mb-2">Welcome, hey there buddy</h1>

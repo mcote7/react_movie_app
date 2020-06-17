@@ -2,13 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import _ from 'lodash';
 //npm i imports*
-const Pagination = props => {
-  const {itemsCount, pageSize, currentPage, onPageChange, onPageNext, onPagePrev} = props;
+const Pagination = ({itemsCount, pageSize, currentPage, onPageChange, onPageNext, onPagePrev}) => {
   const pagesCount = Math.ceil(itemsCount / pageSize);
-  // console.log("pages count:", pagesCount)
   if (pagesCount === 1) return null;
   const pages = _.range(1, pagesCount + 1);
-  // console.log("pages array:", pages)
   return (
       <nav className="ml-3">
         <ul className="pagination pagination-lg">

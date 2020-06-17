@@ -1,7 +1,6 @@
 import React from 'react';
 
-const InfoSideBar = props => {
-  const { currentPage, onDeleteAll } = props;
+const InfoSideBar = ({ currentPage, onDeleteAll }) => {
   return (
     <div className="col-2 pt-3 info-side">
       <p className="m-0">Want to go back ?</p>
