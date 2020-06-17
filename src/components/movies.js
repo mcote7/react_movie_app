@@ -81,6 +81,18 @@ class Movies extends Component {
     this.setState({ sortColumn })
   };
 
+  getPagedData = () => {
+    const {pageSize, currentPage, selectedGenre,
+    movies: allMovies, sortColumn} = this.state;
+    const newMoviesList = sortTheMovies(allMovies);
+    const filtered = selectedGenre && selectedGenre._id
+    ? newMoviesList.filter(m => m.genre._id === selectedGenre._id)
+    : newMoviesList;
+    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
+    const movies = paginate(sorted, currentPage, pageSize);
+    return { totalCount: filtered.length, data: movies }
+  };
+
   render() {
     const {length: count} = this.state.movies;
     if(count === 0) {
@@ -88,42 +100,31 @@ class Movies extends Component {
         <SoldOut/>
       );
     }
-    const {pageSize, currentPage, selectedGenre,
-    movies: allMovies, genres, sortColumn} = this.state;
-    const newMoviesList = sortTheMovies(allMovies);
-
-    const filtered = selectedGenre && selectedGenre._id
-    ? newMoviesList.filter(m => m.genre._id === selectedGenre._id)
-    : newMoviesList;
-    const sorted = _.orderBy(filtered, [sortColumn.path], [sortColumn.order]);
-    const movies = paginate(sorted, currentPage, pageSize);
-    
+    const {pageSize, currentPage, selectedGenre, genres, sortColumn} = this.state;
+    const { totalCount, data: movies} = this.getPagedData();
     const movLen = movies.length;
-    const filteredLen = filtered.length;
-    // console.log("paginated movies-", movies)
-    // console.log("paginated movies-length", movLen)
     return (
     <div>
       <div className="row mt-3">
         <div className="col-10">
           <div className="row mb-2">
             <div className="col-3">
-              <ListGroup items={genres} 
+              <ListGroup items={genres}
               onItemSelect={this.handleGenreSelect} selectedItem={selectedGenre}/>
             </div>
-              <InfoTopBar newMoviesList={newMoviesList} filteredLen={filteredLen}
+              <InfoTopBar count={count} filteredLen={totalCount}
               movLen={movLen} pageSize={pageSize} currentPage={currentPage}/>
           </div>
-            {filteredLen > 0 ?
-            <MoviesTable count={count} movies={movies}  movLen={movLen}
+            {totalCount > 0 ?
+            <MoviesTable count={count} movies={movies}
             currentPage={currentPage}sortColumn={sortColumn} onLike={this.handleLike}
             onDelete={this.handleDelete} onSort={this.handleSort}/> : ''}
         </div>
         <InfoSideBar currentPage={currentPage} onDeleteAll={this.handleDeleteAll}/>
       </div>
       <div className="row">
-        {filteredLen > 0 ?
-        <Pagination itemsCount={filteredLen} pageSize={pageSize}
+        {totalCount > 0 ?
+        <Pagination itemsCount={totalCount} pageSize={pageSize}
         currentPage={currentPage} onPageChange={this.handlePageChange}
         onPagePrev={this.handlePrev} onPageNext={this.handleNext}/> : ''}
     </div>
