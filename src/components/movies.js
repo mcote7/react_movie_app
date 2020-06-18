@@ -112,7 +112,7 @@ class Movies extends Component {
               movLen={movLen} pageSize={pageSize} currentPage={currentPage}/>
           </div>
             {totalCount > 0 ?
-            <MoviesTable count={count} movies={movies}
+            <MoviesTable count={count} movies={movies} movLen={movLen}
             currentPage={currentPage}sortColumn={sortColumn} onLike={this.handleLike}
             onDelete={this.handleDelete} onSort={this.handleSort}/> : ''}
         </div>

@@ -12,9 +12,7 @@ class TableBody extends Component {
       <tbody>
         {count > 0 && data.map((item, idx) =>
           <tr key={idx}>
-            {columns.map((column, i) => column.path === 'title'
-            ? <td key={i}><a href="/">{this.renderCell(item, column)}</a></td>
-            : <td key={i}>{this.renderCell(item, column)}</td>)}
+            {columns.map((column, i) => <td key={i}>{this.renderCell(item, column)}</td>)}
           </tr>)}
       </tbody>
     );

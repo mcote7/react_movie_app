@@ -9,13 +9,19 @@ main {
   box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 4px 6px rgba(0,0,0,.2)!important;
   border-radius: 0.25rem!important;
 }
-/* ---------------------------------- */
+/* -------------movies component------------- */
 .icon {
   color: #007bff!important;
 }
 .not-active:hover {
-  background-color: rgb(246, 248, 250);
+  background-color: rgb(246, 248, 250)!important;
   cursor: pointer;
+}
+.page-item:hover {
+  background-color: rgb(246, 248, 250)!important;
+}
+.page-link:hover {
+  background-color: rgb(246, 248, 250)!important;
 }
 .info-side {
   text-align: center;
@@ -26,7 +32,7 @@ main {
   overflow: auto;
 }
 .info-side:hover {
-  background-color: rgb(245, 245, 245);
+  background-color: white;
 }
 .len-data {
   border-bottom: solid 1px;
@@ -35,11 +41,9 @@ main {
 }
 .len-data:hover {
   border: none;
-  background-color: rgb(245, 245, 245);
+  background-color: white;
 }
-.page-link:hover {
-  background-color: rgb(246, 248, 250)!important;
-}
+/* ----------nav component------------------------ */
 .myNav-top {
   height: 7.2vh;
   background-color: #3a3f49!important;
@@ -48,10 +52,28 @@ main {
   height: 93vh;
   background-color: #3a3f49!important;
 }
-.navImg {
-  height: 3vh!important;
+.navLinks-bold {
+  font-size: 1.2rem;
+  font-weight: bolder;
+  color: #61dafb;
+  border-bottom: solid;
 }
-.x:hover {
+.navLinks-bold:hover {
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  border-bottom: none;
+}
+.navImg {
+  height: 5vh!important;
+}
+.navLinks {
+  color: #61dafb;
+}
+.navLinks:hover {
   cursor: pointer;
   color: white!important;
+  text-decoration: none;
+  border-bottom: solid;
 }
+/* -------------------------------- */
