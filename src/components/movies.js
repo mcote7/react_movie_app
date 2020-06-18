@@ -41,7 +41,7 @@ class Movies extends Component {
   };
 
   handleDeleteAll = () => {
-    this.setState({movies: ""});
+    this.setState({movies: ''});
   };
 
   handleLike = movie => {

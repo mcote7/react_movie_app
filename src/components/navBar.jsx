@@ -13,7 +13,9 @@ const NavBar = () => {
       <NavLink exact to="/movies"  activeClassName={class2} className={class1}>Movies</NavLink>
       <NavLink exact to="/customers"  activeClassName={class2} className={class1}>Customers</NavLink>
       <NavLink exact to="/rentals"  activeClassName={class2} className={class1}>Rentals</NavLink>
-      <NavLink exact to="/login" activeClassName={class2} className={class1}>Login</NavLink>
+      <NavLink exact to="/login" activeClassName={class2} className={class1}>Login
+      <span><i className="fa fa-user-circle user-icon ml-1" aria-hidden="true"></i></span></NavLink>
+      
     </nav>
   );
 };
