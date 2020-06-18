@@ -76,4 +76,10 @@ main {
   text-decoration: none;
   border-bottom: solid;
 }
+.navLinks-on {
+  cursor: pointer;
+  color: white!important;
+  text-decoration: none;
+  border-bottom: solid;
+}
 /* -------------------------------- */
