@@ -8,7 +8,7 @@ const Pagination = ({itemsCount, pageSize, currentPage, onPageChange, onPageNext
   const pages = _.range(1, pagesCount + 1);
   return (
       <nav className="ml-3">
-        <ul className="pagination pagination-lg">
+        <ul className="pagination pagination-lg hovCard">
           <li className="page-item"><a onClick={() => onPagePrev(currentPage)} className="page-link icon" aria-label="Previous">
           <i className="fa fa-chevron-circle-left" aria-hidden="true"></i></a></li>
 

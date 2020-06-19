@@ -4,9 +4,13 @@ body {
   font-family: sans-serif;
   background-color: rgb(245, 245, 245)!important;
 }
-main {
+.myCard {
   background-color: white!important;
-  box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 4px 6px rgba(0,0,0,.2)!important;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.15), 0 4px 6px rgba(0,0,0,.25)!important;
+  border-radius: 0.25rem!important;
+}
+.hovCard:hover {
+  box-shadow: 0 0 0 1px rgba(0,0,0,.05), 0 4px 6px rgba(0,0,0,.1)!important;
   border-radius: 0.25rem!important;
 }
 /* -------------movies component------------- */
@@ -43,7 +47,7 @@ main {
   border: none;
   background-color: white;
 }
-/* ----------nav component------------------------ */
+/* ----------nav bar component------------------------ */
 .myNav-top {
   height: 7.2vh;
   background-color: #3a3f49!important;
@@ -81,8 +85,5 @@ main {
   color: white!important;
   text-decoration: none;
   border-bottom: solid;
-}
-.user-icon {
-  color: #61dafb
 }
 /* -------------------------------- */

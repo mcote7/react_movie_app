@@ -14,7 +14,7 @@ class App extends Component {
     return (
   <React.Fragment>
     <NavBar/>
-      <main className="container p-5 my-4 myContainer">
+      <main className="container p-5 my-4 myCard">
         <Switch>
           <Route exact path="/login" component={LoginForm}/>
           <Route exact path="/movies/:id" component={MovieForm}/>
