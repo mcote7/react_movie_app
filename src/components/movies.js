@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {getMovies} from '../services/fakeMovieService';
 import {getGenres} from '../services/fakeGenreService';
 import {paginate} from '../utilitys/paginate';
-import {sortTheMovies} from '../utilitys/movieSort';
+import {removeThe} from '../utilitys/removeThe';
 import ListGroup from './common/listGroup';
 import InfoTopBar from './infoTopBar';
 import MoviesTable from './moviesTable';
@@ -84,7 +84,7 @@ class Movies extends Component {
   getPagedData = () => {
     const {pageSize, currentPage, selectedGenre,
     movies: allMovies, sortColumn} = this.state;
-    const newMoviesList = sortTheMovies(allMovies);
+    const newMoviesList = removeThe(allMovies);
     const filtered = selectedGenre && selectedGenre._id
     ? newMoviesList.filter(m => m.genre._id === selectedGenre._id)
     : newMoviesList;
