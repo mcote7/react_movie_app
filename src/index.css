@@ -47,6 +47,11 @@ body {
   border: none;
   background-color: white;
 }
+.noMovies {
+  color: red;
+  border-bottom: solid;
+  background-color: rgba(255, 0, 0,0.05);
+}
 /* ----------nav bar component------------------------ */
 .myNav-top {
   height: 7.2vh;
@@ -87,3 +92,10 @@ body {
   border-bottom: solid;
 }
 /* -------------------------------- */
+.errorMess {
+  color: red;
+  background-color: rgba(255, 0, 0,0.1);
+  font-size: small;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+}
