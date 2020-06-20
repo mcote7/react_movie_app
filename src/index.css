@@ -52,7 +52,7 @@ body {
 }
 .len-data:hover {
   border: none;
-  background-color: white;
+  background-color: rgba(97, 218, 251,0.1);
 }
 .noMovies {
   color: red;
@@ -62,7 +62,8 @@ body {
 /* ----------nav bar component------------------------ */
 .myNav-top {
   height: 7.5vh;
-  background-color: #3a3f49!important;
+  /* background-color: #3a3f49!important; */
+  background-color: #20232a!important;
 }
 .navLinks-bold {
   font-size: 1.2rem;
@@ -112,10 +113,10 @@ body {
 /* ---------footer------------------ */
 .myNav-bottom {
   height: 93vh;
-  background-color: #3a3f49!important;
+  /* background-color: #3a3f49!important; */
+  background-color: #20232a!important;
 }
 .footer {
-  margin: 0px!important;
   display: block!important;
   color: #61dafb!important;
   height: 60vh;
