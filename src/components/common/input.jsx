@@ -8,7 +8,7 @@ const Input = ({name, label, value, error, onChange}) => {
         spellCheck="false" autoFocus value={value}
         onChange={onChange} name={name}
         id={name} type="text" className="form-control"/>
-        {error && <span className="errorMess pt-1 pb-2 px-2 ml-1">{error}</span>}
+        {error && <div className="errorMess p-2 mx-1">{error}</div>}
       </div>
   );
 }
