@@ -54,7 +54,7 @@ body {
 }
 /* ----------nav bar component------------------------ */
 .myNav-top {
-  height: 7.2vh;
+  height: 7.5vh;
   background-color: #3a3f49!important;
 }
 .myNav-bottom {
@@ -91,7 +91,7 @@ body {
   text-decoration: none;
   border-bottom: solid;
 }
-/* -------------------------------- */
+/* -------------form--------------- */
 .errorMess {
   color: red;
   background-color: rgba(255, 0, 0,0.1);

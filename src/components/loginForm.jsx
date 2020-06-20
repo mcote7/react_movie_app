@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Joi from 'joi-browser';
 import Input from './common/input';
 import Password from './common/password';
 
@@ -8,16 +9,30 @@ class LoginForm extends Component {
     type: 'password',
     eye: 'fa fa-eye-slash',
     errors: {}
-  }
+  };
+  schema = {
+    username: Joi.string().min(4).required().label('User name'),
+    password: Joi.string().regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/).label('Password')
+  };
   validate = () => {
+    const options = {abortEarly: false};
+    const {error} = Joi.validate(this.state.account, this.schema, options);
+    // console.log("error", error)
+    if(!error) return null;
     const errors = {};
-    const {account} = this.state;
-    if(account.username.trim() === "")
-      errors.username = "user required . . ."
-    if(account.password.trim() === "")
-      errors.password = "password required . . ."
-    return Object.keys(errors).length === 0 ? null : errors;
-  }
+    for(let item of error.details)
+      errors[item.path[0]] = item.message;
+    return errors;
+  };
+  validateProperty = ({name, value}) => {
+    const obj = {[name]: value};
+    const schema = {[name]: this.schema[name]};
+    const {error} = Joi.validate(obj, schema);
+    console.log({error})
+    if(error && error.details[0].message.includes('match'))
+    error.details[0].message = '"Password" must be between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter.';
+    return error ? error.details[0].message : null;
+  };
   handleSubmit = e => {
     e.preventDefault();
     const errors = this.validate();
@@ -27,16 +42,6 @@ class LoginForm extends Component {
     //call server
     console.log("submitted");
   };
-  validateProperty = ({name, value}) => {
-    if(name === "username") {
-      if(value.trim() === "") return "User name required";
-      if(value.length < 4) return "User name must be at least 4 letters long";
-    }
-    if(name === "password") {
-      if(value.trim() === "") return "Password required";
-      if(value.length < 8) return "Password must be at least 8 letters long";
-    }
-  }
   handleChange = ({currentTarget: input}) => {
     const errors = {...this.state.errors};
     const errorMessage = this.validateProperty(input);
@@ -65,7 +70,8 @@ class LoginForm extends Component {
           name="password" value={account.password}
           label="Password" onChange={this.handleChange}
           eye={eye} type={type} onVisable={this.handleVisable}/>
-          <button className="btn btn-primary col-3">Login</button>
+          <button disabled={this.validate()}
+          className="btn btn-primary col-3">Login</button>
         </form>
       </React.Fragment>
     );
