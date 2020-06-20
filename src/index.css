@@ -43,7 +43,7 @@ body {
   overflow: auto;
 }
 .info-side:hover {
-  background-color: white;
+  background-color: rgba(97, 218, 251,0.1);
 }
 .len-data {
   border-bottom: solid 1px;
@@ -62,10 +62,6 @@ body {
 /* ----------nav bar component------------------------ */
 .myNav-top {
   height: 7.5vh;
-  background-color: #3a3f49!important;
-}
-.myNav-bottom {
-  height: 93vh;
   background-color: #3a3f49!important;
 }
 .navLinks-bold {
@@ -112,4 +108,33 @@ body {
   font-size: small;
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
+}
+/* ---------footer------------------ */
+.myNav-bottom {
+  height: 93vh;
+  background-color: #3a3f49!important;
+}
+.footer {
+  margin: 0px!important;
+  display: block!important;
+  color: #61dafb!important;
+  height: 60vh;
+}
+.tinyWords {
+  font-size: xx-small;
+  line-height: 30px;
+}
+.footLinks {
+  color: white;
+  transition: 0.5s;
+  cursor: pointer;
+}
+.footLinks:hover {
+  color: #61dafb;
+}
+.center {
+  text-align: center;
+}
+.grey {
+  color: rgb(152, 164, 175);
 }

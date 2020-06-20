@@ -1,8 +1,9 @@
 import React from 'react';
+import image from './404image.jpg';
 
 const NotFound = () => {
   return (
-    <h1>Not Found</h1>
+    <img style={{height: "60vh", width: "68vw"}} src={image} alt="404"/>
   );
 }
 

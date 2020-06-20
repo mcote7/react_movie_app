@@ -1,6 +1,7 @@
 import React from 'react';
 import Form from './common/form';
 import Joi from 'joi-browser';
+import RegisterInfo from './registerInfo';
 
 class RegisterForm extends Form {
   state = {
@@ -26,12 +27,15 @@ class RegisterForm extends Form {
     return (
       <React.Fragment>
         <h1>Register</h1>
-        <form className="col-6" onSubmit={this.handleSubmit}>
-          {this.renderInput("username", "User Name")}
-          {this.renderInput("email", "Email")}
-          {this.renderPassword("password", "Password")}
-          {this.renderButton('Register')}
-        </form>
+        <div className="row">
+          <form className="col-5" onSubmit={this.handleSubmit}>
+            {this.renderInput("username", "User Name")}
+            {this.renderInput("email", "Email")}
+            {this.renderPassword("password", "Password")}
+            {this.renderButton('Register')}
+          </form>
+          <RegisterInfo/>
+        </div>
       </React.Fragment>
     );
   }

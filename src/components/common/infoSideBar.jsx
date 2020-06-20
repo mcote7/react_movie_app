@@ -11,7 +11,7 @@ const InfoSideBar = ({ currentPage, onDeleteAll }) => {
       <Link to="/">go back here</Link>&nbsp;
       <span className="">( {currentPage} )</span>
       <hr/>
-      <p>"Cosmic<Link to="/"> ocean </Link>encyclopaedia galactica of brilliant syntheses
+      <p>"Lorem <Link to="/"> ipsum </Link>encyclopaedia galactica of brilliant syntheses
         <Link to="/"> billions </Link> upon <Link to="/"> billions </Link>
         invent the universe prime number. Venture not a sunrise but a
         <Link to="/"> galaxyrise Cambrian explosion bits </Link>

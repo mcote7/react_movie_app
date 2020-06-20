@@ -24,7 +24,7 @@ class LoginForm extends Form {
     return (
       <React.Fragment>
         <h1>Login</h1>
-        <form className="col-6" onSubmit={this.handleSubmit}>
+        <form className="col-5" onSubmit={this.handleSubmit}>
           {this.renderInput("username", "User Name")}
           {this.renderPassword("password", "Password")}
           {this.renderButton('Login')}

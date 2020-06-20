@@ -6,16 +6,51 @@ import logo from './logo192.png'
 const Footer = () => {
   return (
     <nav className="navbar navbar-expand-lg myNav-bottom">
-      <img className="m-3 App-logo" src={logo} alt="img-react"/>
-      <Link to="/" className="ml-5 navLinks" style={{color: "#61dafb", letterSpacing: "1em"}}>
-        &copy;&nbsp;2020&nbsp;&nbsp;michael cote
-        &nbsp;&nbsp;&nbsp;made with React</Link>
+      <div className="container footer">
+        <div className="row">
+
+          <div className="col-3 center">
+            <h4 className="grey">ADD LINKS</h4>
+            <hr/>
+            <p className="footLinks">add link</p>
+            <p className="footLinks">add link</p>
+            <p className="footLinks">add link</p>
+            <p className="footLinks">add link</p>
+            <p className="footLinks">add link</p>
+            <p className="footLinks">add link</p>
+          </div>
+
+          <div className="col-3 center">
+            <h4 className="grey">MORE LINKS</h4>
+            <hr/>
+            <p className="footLinks">more link</p>
+            <p className="footLinks">more link</p>
+            <p className="footLinks">more link</p>
+            <p className="footLinks">more link</p>
+          </div>
+
+          <div className="col-3"></div>
+
+          <div className="col-3">
+              <div className="row">
+                <span><i class="fa fa-pied-piper-alt fa-3x reactBlue" aria-hidden="true"></i>
+                &nbsp;&nbsp;&nbsp;&nbsp;powered by pied piper.</span>
+              </div>
+                <div className="row my-5">
+                  <Link to="/" className="navLinks">
+                  &copy;&nbsp;2020 Michael Cote</Link>
+                  &nbsp;<span className="tinyWords">made with</span>&nbsp;<span>React.</span> 
+                </div>
+              <div className="row mt-5">
+                <img className="App-logo" src={logo} alt="img-react"/>
+              </div>
+          </div>
+
+        </div>
+      </div>
       <ScrollUpButton />
     </nav>
   );
 }
 
 export default Footer;
-
-
-// row w/ 3 col  |  |  |  |?
