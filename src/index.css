@@ -66,6 +66,7 @@ body {
   font-weight: bolder;
   color: #61dafb;
   border-bottom: solid;
+  transition: 0.1s;
 }
 .navLinks-bold:hover {
   cursor: pointer;
@@ -78,6 +79,7 @@ body {
 }
 .navLinks {
   color: #61dafb;
+  transition: 0.1s;
 }
 .navLinks:hover {
   cursor: pointer;
