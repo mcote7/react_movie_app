@@ -2,10 +2,11 @@ import React from 'react';
 import Form from './common/form';
 import Joi from 'joi-browser';
 
-class LoginForm extends Form {
+class RegisterForm extends Form {
   state = {
     data: {
       username: '',
+      email: '',
       password: ''
     },
     type: 'password',
@@ -13,8 +14,9 @@ class LoginForm extends Form {
     errors: {}
   };
   schema = {
-    username: Joi.string().min(4).required().label('User name'),
-    password: Joi.string().regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/).label('Password')
+    username: Joi.string().required().min(4).label('User name'),
+    email: Joi.string().required().regex(/(.+)@(.+){2,}\.(.+){2,}/).label('Email'),
+    password: Joi.string().required().regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/).label('Password'),
   };
   doSubmit = () => {
     //call server
@@ -23,15 +25,18 @@ class LoginForm extends Form {
   render() {
     return (
       <React.Fragment>
-        <h1>Login</h1>
+        <h1>Register</h1>
         <form className="col-6" onSubmit={this.handleSubmit}>
           {this.renderInput("username", "User Name")}
+          {this.renderInput("email", "Email")}
           {this.renderPassword("password", "Password")}
-          {this.renderButton('Login')}
+          {this.renderButton('Register')}
         </form>
       </React.Fragment>
     );
   }
 }
 
-export default LoginForm;
+export default RegisterForm;
+
+

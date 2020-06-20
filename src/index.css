@@ -13,6 +13,13 @@ body {
   box-shadow: 0 0 0 1px rgba(0,0,0,.05), 0 4px 6px rgba(0,0,0,.1)!important;
   border-radius: 0.25rem!important;
 }
+.reactBlue {
+  color: #61dafb;
+  transition: 2s;
+}
+.reactBlue:hover {
+  color: white;
+}
 /* -------------movies component------------- */
 .icon {
   color: #007bff!important;
@@ -76,6 +83,11 @@ body {
 }
 .navImg {
   height: 5vh!important;
+}
+.navImg2 {
+  height: 5vh!important;
+  background-color: #61dafb;
+  border-radius: 0.25rem;
 }
 .navLinks {
   color: #61dafb;
