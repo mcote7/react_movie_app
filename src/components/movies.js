@@ -123,7 +123,7 @@ class Movies extends Component {
               <ListGroup items={genres}
               onItemSelect={this.handleGenreSelect} selectedItem={selectedGenre}/>
             </div>
-            <div className="col-7 p-0">
+            <div className="col-8 ml-3 p-0">
               <InfoTopBar count={count} filteredLen={totalCount}
               movLen={movLen} pageSize={pageSize} currentPage={currentPage}/>
               <SearchBox value={searchQuery} onChange={this.handleSearch}/>
