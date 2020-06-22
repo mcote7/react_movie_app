@@ -41,6 +41,7 @@ body {
   background-color: rgb(246, 248, 250);
   cursor: help;
   overflow: auto;
+  transition: 0.2s;
 }
 .info-side:hover {
   background-color: rgba(97, 218, 251,0.1);
@@ -138,4 +139,13 @@ body {
 }
 .grey {
   color: rgb(152, 164, 175);
+}
+.form-control {
+  background-color: rgb(246, 248, 250)!important;
+}
+.form-control:hover {
+  background-color: rgba(97, 218, 251,0.1)!important;
+}
+.form-control:focus {
+  background-color: rgba(97, 218, 251,0.1)!important;
 }

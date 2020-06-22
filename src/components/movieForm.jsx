@@ -58,7 +58,7 @@ class MovieForm extends Form {
         {this.renderInput("title", "Title")}
         {this.renderSelect("genreId", "Genre", this.state.genres)}
         {this.renderInput("numberInStock", "Number in Stock", "number")}
-        {this.renderInput("dailyRentalRate", "Rate")}
+        {this.renderInput("dailyRentalRate", "Rate", "number")}
         {this.renderButton("Submit")}
       </form>
     </React.Fragment>
