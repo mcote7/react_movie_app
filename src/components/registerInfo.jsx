@@ -4,7 +4,7 @@ const RegisterInfo = () => {
   return (
     <React.Fragment>
       <div className="col-1"></div>
-    <div className="col-5 info-side">
+    <div className="col-5 info-register">
       <p className="mt-5">REGISTER&nbsp;&nbsp;with&nbsp;
       REACTIVE CINEMA<span><i className="fa fa-video-camera ml-1" aria-hidden="true"></i></span></p>
       <hr/>

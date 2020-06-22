@@ -9,8 +9,8 @@ import Customers from './components/customers';
 import NotFound from './components/notFound';
 import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
+import ScrollToTop from 'react-router-scroll-top'
 import './App.css'
-
 
 class App extends Component {
   render() {
@@ -18,6 +18,7 @@ class App extends Component {
   <React.Fragment>
     <NavBar/>
       <main className="container p-5 my-4 myCard">
+        <ScrollToTop/>
         <Switch>
           <Route exact path="/register" component={RegisterForm}/>
           <Route exact path="/login" component={LoginForm}/>

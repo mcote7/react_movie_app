@@ -149,3 +149,10 @@ body {
 .form-control:focus {
   background-color: rgba(97, 218, 251,0.1)!important;
 }
+.info-register {
+  text-align: center;
+  border-radius: 0.25rem;
+  color: #212529;
+  background-color: rgba(97, 218, 251,0.1);
+  overflow: auto;
+}
