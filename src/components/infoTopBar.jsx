@@ -2,7 +2,7 @@ import React from 'react';
 
 const InfoTopBar = ({ count, filteredLen, movLen, pageSize, currentPage }) => {
   return (
-  <div className="col-7 p-0">
+    <React.Fragment>
     <h1 className="mb-2">Welcome, hey there buddy</h1>
       <h5 className="">We have {count} total movies in the database</h5>
       {filteredLen === 0 ? <p className="p-1 noMovies">&emsp;no movies here . . .</p> : ''}
@@ -11,7 +11,7 @@ const InfoTopBar = ({ count, filteredLen, movLen, pageSize, currentPage }) => {
         :<span>{movLen} movie</span> }&nbsp;
         {(filteredLen / pageSize -1) > 0 ? <span>on page&nbsp; {currentPage} 
         &nbsp;&nbsp;of&nbsp; {(Math.ceil(filteredLen / pageSize))} .</span> : ""}</p> : ""}
-    </div>
+    </React.Fragment>
   );
 }
 

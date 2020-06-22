@@ -11,6 +11,7 @@ import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
 import './App.css'
 
+
 class App extends Component {
   render() {
     return (
@@ -18,8 +19,8 @@ class App extends Component {
     <NavBar/>
       <main className="container p-5 my-4 myCard">
         <Switch>
-          <Route exact path="/login" component={LoginForm}/>
           <Route exact path="/register" component={RegisterForm}/>
+          <Route exact path="/login" component={LoginForm}/>
           <Route exact path="/movies/:id" component={MovieForm}/>
           <Route exact path="/movies" component={Movies}/>
           <Route exact path="/customers" component={Customers}/>

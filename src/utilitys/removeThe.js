@@ -1,12 +1,14 @@
+//will remove "The" from name or title, also capitalize if needed.
 //change .title for any list attribute
 export function removeThe(list) {
   const the = ", The";
   const theResult = [];
   list && list.forEach(item => {
-    if(item.title.startsWith("The ")) {
+    if(item.title.startsWith("The ")||item.title.startsWith("the ")) {
       let subString = item.title.substring(4);
-      subString += the;
-      item.title = subString;
+      let result = subString.charAt(0).toUpperCase() + subString.slice(1);
+      result += the;
+      item.title = result;
     }
     theResult.push(item);
   })

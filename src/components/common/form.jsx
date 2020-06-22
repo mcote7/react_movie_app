@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import Joi from 'joi-browser';
 import Input from './input';
 import Password from './password';
+import Select from './select';
 
 class Form extends Component {
   state = {
     data: {},
     errors: {}
   };
+
   validate = () => {
     const options = {abortEarly: false};
     const {error} = Joi.validate(this.state.data, this.schema, options);
@@ -18,6 +20,7 @@ class Form extends Component {
       errors[item.path[0]] = item.message;
     return errors;
   };
+
   validateProperty = ({name, value}) => {
     const obj = {[name]: value};
     const schema = {[name]: this.schema[name]};
@@ -29,6 +32,7 @@ class Form extends Component {
     error.details[0].message = '"Password" must be between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter.';
     return error ? error.details[0].message : null;
   };
+
   handleSubmit = e => {
     e.preventDefault();
     const errors = this.validate();
@@ -37,6 +41,8 @@ class Form extends Component {
     if(errors) return;
     this.doSubmit();
   };
+
+  //Check delete?
   handleChange = ({currentTarget: input}) => {
     const errors = {...this.state.errors};
     const errorMessage = this.validateProperty(input);
@@ -46,11 +52,24 @@ class Form extends Component {
     data[input.name] = input.value;
     this.setState({data, errors});
   };
+
   renderButton(label) {
     return(
     <button disabled={this.validate()}
     className="btn btn-primary col-6">{label}</button>);
   };
+
+  renderSelect(name, label, options) {
+    const { data, errors } = this.state;
+    return (
+      <Select 
+      name={name}
+      value={data[name]}
+      label={label}options={options}
+      onChange={this.handleChange}error={errors[name]}/>
+    );
+  };
+
   renderInput(name, label, type = 'text') {
     const {data, errors} = this.state;
     return(
@@ -59,11 +78,13 @@ class Form extends Component {
       label={label} onChange={this.handleChange}/>
     );
   };
+
   handleVisable = () => {
     this.state.type === 'password' ?
     this.setState({type: 'text', eye: 'fa fa-eye icon'}) :
     this.setState({type: 'password', eye: 'fa fa-eye-slash'});
   };
+
   renderPassword(name, label) {
     const {data, errors, type, eye} = this.state;
     return(
