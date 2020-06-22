@@ -1,4 +1,4 @@
-//will remove "The" from name or title, also capitalize if needed.
+//will remove "The" from name or title, then append to end auto capitalize if needed.
 //change .title for any list attribute
 export function removeThe(list) {
   const the = ", The";
