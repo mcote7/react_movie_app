@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {Route, Redirect, Switch} from 'react-router-dom';
+import {ToastContainer} from 'react-toastify';
 import Movies from './components/movies';
 import MovieForm from './components/movieForm';
 import Footer from './components/common/footer';
@@ -9,14 +10,16 @@ import Customers from './components/customers';
 import NotFound from './components/notFound';
 import LoginForm from './components/loginForm';
 import RegisterForm from './components/registerForm';
-import ScrollToTop from 'react-router-scroll-top'
-import './App.css'
+import ScrollToTop from 'react-router-scroll-top';
+import 'react-toastify/dist/ReactToastify.css';
+import './App.css';
 
 class App extends Component {
   render() {
     return (
     <React.Fragment>
       <NavBar/>
+      <ToastContainer/>
         <main className="container p-5 my-4 myCard">
           <ScrollToTop/>
           <Switch>

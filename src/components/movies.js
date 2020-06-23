@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {getMovies} from '../services/fakeMovieService';
-import {getGenres} from '../services/fakeGenreService';
+import {toast} from 'react-toastify';
+import {getMovies, deleteMovie} from '../services/movieService';
+import {getGenres} from '../services/genreService';
 import {paginate} from '../utilitys/paginate';
 import {removeThe} from '../utilitys/removeThe';
 import ListGroup from './common/listGroup';
@@ -25,24 +26,26 @@ class Movies extends Component {
     sortColumn: { path: 'title', order: 'asc' }
   };
 
-  componentDidMount() {
-    const genres = [{ name: "All Genres" },...getGenres()];
-    this.setState({movies: getMovies(), genres});
-    // console.log("all genres:", genres)
-  }
+  async componentDidMount() {
+    const {data} = await getGenres();
+    const genres = [{ name: "All Genres" },...data];
+    const {data: movies} = await getMovies();
+    this.setState({movies, genres});
+  };
 
-  handleDelete = (movie, movLen, currentPage) => {
-    const allGenres = this.state.genres.filter(g => g.name === "All Genres");
-    // console.log("all-genres", allGenres)
-    // console.log("current-page", currentPage)
-    const movies = this.state.movies.filter(m => m._id !== movie._id);
-    if(movLen === 1 && currentPage > 1) {
-      this.setState({ movies, currentPage: currentPage -= 1});
-    }
-    else if(movLen === 1 && currentPage === 1) {
-      this.setState({ movies, selectedGenre: allGenres});
-    }
+  handleDelete = async movie => {
+    const originalMovies = this.state.movies;
+    const movies = originalMovies.filter(m => m._id !== movie._id);
     this.setState({ movies });
+
+    try {
+      await deleteMovie(movie._id);
+    } catch (ex) {
+      if (ex.response && ex.response.status === 404) console.log("x");
+      toast("This movie has already been deleted.");
+
+      this.setState({ movies: originalMovies });
+    }
   };
 
   handleDeleteAll = () => {
@@ -126,13 +129,14 @@ class Movies extends Component {
             <div className="col-8 ml-3 p-0">
               <InfoTopBar count={count} filteredLen={totalCount}
               movLen={movLen} pageSize={pageSize} currentPage={currentPage}/>
+              <hr className="mt-4"/>
               <SearchBox value={searchQuery} onChange={this.handleSearch}/>
             </div>
           </div>
             {totalCount > 0 ?
             <MoviesTable count={count} movies={movies} movLen={movLen}
             currentPage={currentPage}sortColumn={sortColumn} onLike={this.handleLike}
-            onDelete={this.handleDelete} onSort={this.handleSort}/> : ''}
+            onDelete={this.handleDelete} onSort={this.handleSort}/>:''}
         </div>
         <InfoSideBar currentPage={currentPage} onDeleteAll={this.handleDeleteAll}/>
       </div>
@@ -140,7 +144,7 @@ class Movies extends Component {
         {totalCount > 0 ?
         <Pagination itemsCount={totalCount} pageSize={pageSize}
         currentPage={currentPage} onPageChange={this.handlePageChange}
-        onPagePrev={this.handlePrev} onPageNext={this.handleNext}/> : ''}
+        onPagePrev={this.handlePrev} onPageNext={this.handleNext}/>:''}
         <div className="col">
           <Link to="/movies/new" className="btn btn-primary ml-5">Add New Movie</Link>
         </div>

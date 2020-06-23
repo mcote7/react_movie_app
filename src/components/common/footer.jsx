@@ -33,7 +33,7 @@ const Footer = () => {
 
           <div className="col-3 ml-auto">
               <div className="row">
-                <span><i class="fa fa-pied-piper-alt fa-3x reactBlue" aria-hidden="true"></i>
+                <span><i className="fa fa-pied-piper-alt fa-3x reactBlue" aria-hidden="true"></i>
                 &nbsp;&nbsp;&nbsp;&nbsp;powered by pied piper.</span>
               </div>
                 <div className="row my-5">
