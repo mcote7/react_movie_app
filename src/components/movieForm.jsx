@@ -3,6 +3,7 @@ import Joi from "joi-browser";
 import Form from "./common/form";
 import { getMovie, saveMovie } from "../services/movieService";
 import { getGenres } from "../services/genreService";
+import MovieInfo from './movieInfo';
 
 class MovieForm extends Form {
   state = {
@@ -66,7 +67,7 @@ class MovieForm extends Form {
       console.log("error", ex)
       if(ex.response && ex.response.status === 500) {
         const errors = {...this.state.errors};
-        errors.title = "A movie with this title already exists.";
+        errors.email = "A movie with this title already exists.";
         this.setState({errors});
       }
     }
@@ -75,15 +76,20 @@ class MovieForm extends Form {
   render() {
     const {match} = this.props;
     return (
-      <React.Fragment>
-      {match.params.id === 'new' ? <h1>New Movie</h1> : <h1>Edit Movie #&nbsp;{match.params.id}</h1>}
-      <form className="col-5" onSubmit={this.handleSubmit}>
-        {this.renderInput("title", "Title")}
-        {this.renderSelect("genreId", "Genre", this.state.genres)}
-        {this.renderInput("numberInStock", "Number in Stock", "number")}
-        {this.renderInput("dailyRentalRate", "Rate", "number")}
-        {this.renderButton("Submit")}
-      </form>
+    <React.Fragment>
+      {match.params.id === 'new' ? <h1>New Movie</h1> : <h1>Edit Movie</h1>}
+      <div className="row">
+        <div className="col-5">
+          <form onSubmit={this.handleSubmit}>
+            {this.renderInput("title", "Title")}
+            {this.renderSelect("genreId", "Genre", this.state.genres)}
+            {this.renderInput("numberInStock", "Number in Stock", "number")}
+            {this.renderInput("dailyRentalRate", "Rate", "number")}
+            {this.renderButton("Submit")}
+          </form>
+        </div>
+      <MovieInfo/>
+    </div>
     </React.Fragment>
     );
   }

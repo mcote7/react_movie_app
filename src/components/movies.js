@@ -36,7 +36,7 @@ class Movies extends Component {
   handleDelete = async movie => {
     const originalMovies = this.state.movies;
     const movies = originalMovies.filter(m => m._id !== movie._id);
-    this.setState({ movies });
+    this.setState({ movies, currentPage: 1, selectedGenre: "All Genres" });
 
     try {
       await deleteMovie(movie._id);

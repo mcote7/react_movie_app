@@ -12,7 +12,8 @@ const Pagination = ({itemsCount, pageSize, currentPage, onPageChange, onPageNext
           <li className="page-item"><a onClick={() => onPagePrev(currentPage)} className="page-link icon" aria-label="Previous">
           <i className="fa fa-chevron-circle-left" aria-hidden="true"></i></a></li>
 
-          {pages.map(p => (
+          {pagesCount >= 9 ? <li className="page-item"><p className="px-3 pt-3">({currentPage}) of {pagesCount}</p></li>:
+          pages.map(p => (
           <li key={p} className={ p === currentPage ? "page-item active" : "page-item"}>
           <a className="page-link" onClick={() => onPageChange(p)}>{p}</a></li>
           ))}
