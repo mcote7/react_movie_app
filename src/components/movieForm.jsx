@@ -58,8 +58,18 @@ class MovieForm extends Form {
   }
 
   doSubmit = async () => {
-    await saveMovie(this.state.data);
-    this.props.history.push("/movies");
+    try {
+      await saveMovie(this.state.data);
+      this.props.history.push("/movies");
+    }
+    catch (ex) {
+      console.log("error", ex)
+      if(ex.response && ex.response.status === 500) {
+        const errors = {...this.state.errors};
+        errors.title = "A movie with this title already exists.";
+        this.setState({errors});
+      }
+    }
   };
 
   render() {

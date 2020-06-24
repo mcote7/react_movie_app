@@ -6,7 +6,7 @@ import LoginInfo from './loginInfo';
 class LoginForm extends Form {
   state = {
     data: {
-      username: '',
+      email: '',
       password: ''
     },
     type: 'password',
@@ -14,7 +14,7 @@ class LoginForm extends Form {
     errors: {}
   };
   schema = {
-    username: Joi.string().min(4).required().label('User name'),
+    email: Joi.string().min(4).required().label('Email'),
     password: Joi.string().regex(/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/).label('Password')
   };
   doSubmit = () => {
@@ -27,7 +27,7 @@ class LoginForm extends Form {
         <h1>Login</h1>
         <div className="row">
           <form className="col-5" onSubmit={this.handleSubmit}>
-            {this.renderInput("username", "User Name")}
+            {this.renderInput("email", "Email")}
             {this.renderPassword("password", "Password")}
             {this.renderButton('Login')}
           </form>
