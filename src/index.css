@@ -52,7 +52,6 @@ body {
   background-color: rgb(246, 248, 250);
 }
 .len-data:hover {
-  border: none;
   background-color: rgba(97, 218, 251,0.1);
 }
 .noMovies {
@@ -114,6 +113,7 @@ body {
 /* ---------footer------------------ */
 .myNav-bottom {
   height: 93vh;
+  padding-top: 20vh;
   /* background-color: #3a3f49!important; */
   background-color: #20232a!important;
 }
@@ -156,8 +156,11 @@ body {
   background-color: rgba(97, 218, 251,0.1);
   overflow: auto;
 }
-.title {
+/* .title {
   border-radius: 0.25rem;
   color: #212529;
   background-color: rgba(97, 218, 251,0.1);
+} */
+.time {
+  color: white;
 }

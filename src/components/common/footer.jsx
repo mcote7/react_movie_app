@@ -1,13 +1,14 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import ScrollUpButton from 'react-scroll-up-button';
+import Clock from '../common/clock';
 import logo from './logo192.png'
 
 const Footer = () => {
   return (
-    <nav className="navbar navbar-expand-lg myNav-bottom">
-      <div className="container footer">
-        <div className="row">
+    <nav className="myNav-bottom">
+      <div className="footer">
+        <div className="row m-0 p-0">
 
           <div className="col-3 center">
             <h4 className="grey">ADD LINKS</h4>
@@ -23,15 +24,17 @@ const Footer = () => {
           <div className="col-3 center">
             <h4 className="grey">MORE LINKS</h4>
             <hr/>
+            <Clock/>
             <p className="footLinks">more link</p>
             <p className="footLinks">more link</p>
             <p className="footLinks">more link</p>
             <p className="footLinks">more link</p>
           </div>
 
-          <div className="col-3 center"></div>
+          <div className="col-3 center">
+          </div>
 
-          <div className="col-3 ml-auto">
+          <div className="col-3">
               <div className="row">
                 <span><i className="fa fa-pied-piper-alt fa-3x reactBlue" aria-hidden="true"></i>
                 &nbsp;&nbsp;&nbsp;&nbsp;powered by pied piper.</span>
