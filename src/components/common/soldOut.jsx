@@ -9,8 +9,7 @@ const SoldOut = () => {
         <p className="lead">{laurem}{ipsum}</p>
       <hr className="my-4"/>
         <p>{ipsum}{laurem}</p>
-      <a className="btn btn-primary btn-lg" href="/" role="button">
-      <span role="img" aria-label="so" className="mike">&#x1f595; Go Back Sold Out! &#x1f595;</span></a>
+      <a className="btn btn-primary btn-lg" href="/" role="button">Go Back Sold Out!</a>
     </div>
   );
 }
