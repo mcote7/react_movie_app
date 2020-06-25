@@ -116,6 +116,7 @@ class Movies extends Component {
     const {length: count} = this.state.movies;
     if(count === 0) return <SoldOut/>;
     const {pageSize, currentPage, selectedGenre, genres, sortColumn, searchQuery} = this.state;
+    const {user} = this.props;
     const {totalCount, data: movies} = this.getPagedData();
     const movLen = movies.length;
     return (
@@ -147,7 +148,7 @@ class Movies extends Component {
         currentPage={currentPage} onPageChange={this.handlePageChange}
         onPagePrev={this.handlePrev} onPageNext={this.handleNext}/>:''}
         <div className="col">
-          <Link to="/movies/new" className="btn btn-primary ml-5">Add New Movie</Link>
+          {user && <Link to="/movies/new" className="btn btn-primary ml-5">Add New Movie</Link>}
         </div>
       </div>
     </React.Fragment>

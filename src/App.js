@@ -11,6 +11,7 @@ import NotFound from './components/notFound';
 import LoginForm from './components/loginForm';
 import Logout from './components/logout';
 import RegisterForm from './components/registerForm';
+import ProtectedRoute from './components/common/protectedRoute';
 import ScrollToTop from 'react-router-scroll-top';
 import auth from './services/authService';
 import 'react-toastify/dist/ReactToastify.css';
@@ -26,9 +27,10 @@ class App extends Component {
   };
 
   render() {
+    const {user} = this.state;
     return (
     <React.Fragment>
-      <NavBar user={this.state.user}/>
+      <NavBar user={user}/>
       <ToastContainer/>
         <main className="container p-5 my-4 myCard">
           <ScrollToTop/>
@@ -36,8 +38,9 @@ class App extends Component {
             <Route exact path="/register" component={RegisterForm}/>
             <Route exact path="/login" component={LoginForm}/>
             <Route exact path="/logout" component={Logout}/>
-            <Route exact path="/movies/:id" component={MovieForm}/>
-            <Route exact path="/movies" component={Movies}/>
+            <ProtectedRoute exact path="/movies/:id" component={MovieForm}/>
+            <Route exact path="/movies"
+              render={props=><Movies {...props} user={this.state.user}/>}/>
             <Route exact path="/customers" component={Customers}/>
             <Route exact path="/rentals" component={Rentals}/>
             <Route exact path="/not-found" component={NotFound}/>
