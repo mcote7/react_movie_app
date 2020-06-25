@@ -61,7 +61,7 @@ body {
 }
 /* ----------nav bar component------------------------ */
 .myNav-top {
-  height: 7.5vh;
+  /* height: 7.5vh; */
   /* background-color: #3a3f49!important; */
   background-color: #20232a!important;
 }
