@@ -6,7 +6,7 @@ const Input = ({name, label, error, ...rest}) => {
         <label htmlFor={name}>{label}</label>
         <input {...rest}
         name={name} id={name}
-        spellCheck="false" autoComplete="off" className="form-control"/>
+        spellCheck="false"  className="form-control"/>
         {error && <div className="errorMess p-2 mx-1">{error}</div>}
       </div>
   );

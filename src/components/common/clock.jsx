@@ -25,7 +25,9 @@ class Clock extends Component {
 
     render() {
         return (
-            <p className="time"><span><i class="fa fa-clock-o" aria-hidden="true"></i></span> {this.state.date.toLocaleTimeString()}</p>
+            <p className="time"><span>
+                <i className="fa fa-clock-o" aria-hidden="true"></i>
+                </span> {this.state.date.toLocaleTimeString()}</p>
         );
     }
 }

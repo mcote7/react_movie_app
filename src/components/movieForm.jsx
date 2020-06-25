@@ -67,7 +67,7 @@ class MovieForm extends Form {
       console.log("error", ex)
       if(ex.response && ex.response.status === 500) {
         const errors = {...this.state.errors};
-        errors.email = "A movie with this title already exists.";
+        errors.title = "A movie with this title already exists.";
         this.setState({errors});
       }
     }
