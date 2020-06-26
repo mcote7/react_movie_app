@@ -3,6 +3,7 @@ body {
   padding: 0;
   font-family: sans-serif;
   background-color: rgb(245, 245, 245)!important;
+  /* background-image: url(http://lorempixel.com/g/1000/1000/); */
 }
 .myCard {
   background-color: white!important;
