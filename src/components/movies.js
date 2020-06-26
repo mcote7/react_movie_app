@@ -121,7 +121,7 @@ class Movies extends Component {
     const {user} = this.props;
     const {totalCount, data: movies} = this.getPagedData();
     const movLen = movies.length;
-    if(isLoading) return <h1 style={{color: "red"}}><span className="App-logo2"><i className="fa fa-spinner fa-5x" aria-hidden="true"></i></span> Loading. . .</h1>;
+    if(isLoading) return <h1 style={{color: "red"}}><span><i className="fa fa-spinner fa-5x App-logo2" aria-hidden="true"></i></span>&nbsp;&nbsp;Loading . . .</h1>;
     if(count === 0) return <SoldOut/>;
     return (
     <React.Fragment>
