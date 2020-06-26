@@ -117,12 +117,12 @@ class Movies extends Component {
 
   render() {
     const {length: count} = this.state.movies;
-    if(count === 0) return <SoldOut/>;
     const {pageSize, currentPage, selectedGenre, genres, sortColumn, searchQuery, isLoading} = this.state;
     const {user} = this.props;
     const {totalCount, data: movies} = this.getPagedData();
     const movLen = movies.length;
-    if(isLoading) return <h1>Loading. . .</h1>;
+    if(isLoading) return <h1 style={{color: "red"}}><span><i className="fa fa-spinner fa-5x" aria-hidden="true"></i></span> Loading. . .</h1>;
+    if(count === 0) return <SoldOut/>;
     return (
     <React.Fragment>
       <div className="row mt-3">
