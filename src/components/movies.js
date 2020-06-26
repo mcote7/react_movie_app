@@ -114,7 +114,7 @@ class Movies extends Component {
 
   render() {
     const {length: count} = this.state.movies;
-    if(count === 0) return <SoldOut/>;
+    // if(count === 0) return <SoldOut/>;
     const {pageSize, currentPage, selectedGenre, genres, sortColumn, searchQuery} = this.state;
     const {user} = this.props;
     const {totalCount, data: movies} = this.getPagedData();
