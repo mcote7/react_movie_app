@@ -244,12 +244,15 @@ body {
   .btn {
     display: block!important;
   }
-  /* .sticky-top {
+  .sticky-top {
     position: relative!important;
-  } */
+  }
 
   .myNav-top, .myNav-bottom {
     background-color: black!important;
+  }
+  .myNav-bottom {
+    height: 100vh!important;
   }
 }
 
