@@ -68,11 +68,13 @@ class Movies extends Component {
   handlePageChange = page => {
     console.log("page#",page)
     this.setState({currentPage: page});
+    window.scrollTo({top: 350, behavior: 'smooth'});
   };
 
   handleNext = (page, pagesCount) => {
     if(page < pagesCount) {
       this.setState({currentPage: page += 1});
+      window.scrollTo({top: 350, behavior: 'smooth'});
     }
     this.setState({currentPage: page});
   };
@@ -80,6 +82,7 @@ class Movies extends Component {
   handlePrev = (page) => {
     if(page > 1) {
       this.setState({currentPage: page -= 1});
+      window.scrollTo({top: 350, behavior: 'smooth'});
     }
     this.setState({currentPage: page});
   };
