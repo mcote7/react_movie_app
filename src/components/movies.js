@@ -133,7 +133,7 @@ class Movies extends Component {
         <div className="col-10">
           <div className="row mb-2">
             <div className="col-3">
-              <ListGroup items={genres}
+              <ListGroup items={genres} movieCount={totalCount}
               onItemSelect={this.handleGenreSelect} selectedItem={selectedGenre}/>
             </div>
             <div className="col-8 ml-3 p-0">
