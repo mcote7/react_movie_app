@@ -8,7 +8,7 @@ const Footer = () => {
   return (
     <nav className="myNav-bottom">
       <div className="footer">
-        <div className="row m-0 p-0">
+        <div className="footrow m-0 p-0">
 
           <div className="col-3 center">
             <h4 className="grey">ADD LINKS</h4>
@@ -34,7 +34,7 @@ const Footer = () => {
           <div className="col-3 center">
           </div>
 
-          <div className="col-3">
+          <div className="col-3 center">
               <div className="row">
                 <span><i className="fa fa-pied-piper-alt fa-3x reactBlue" aria-hidden="true"></i>
                 &nbsp;&nbsp;&nbsp;&nbsp;powered by pied piper.</span>
@@ -51,7 +51,7 @@ const Footer = () => {
 
         </div>
       </div>
-      <ScrollUpButton />
+      <ScrollUpButton/>
     </nav>
   );
 }

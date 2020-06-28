@@ -5,6 +5,7 @@ import {getMovies, deleteMovie} from '../services/movieService';
 import {getGenres} from '../services/genreService';
 import {paginate} from '../utilitys/paginate';
 import {removeThe} from '../utilitys/removeThe';
+import Loading from './common/loading';
 import ListGroup from './common/listGroup';
 import InfoTopBar from './infoTopBar';
 import SearchBox from './common/searchbox';
@@ -121,7 +122,7 @@ class Movies extends Component {
     const {user} = this.props;
     const {totalCount, data: movies} = this.getPagedData();
     const movLen = movies.length;
-    if(isLoading) return <h1 style={{color: "red"}}><span><i className="fa fa-spinner fa-5x App-logo2" aria-hidden="true"></i></span>&nbsp;&nbsp;Loading . . .</h1>;
+    if(isLoading) return <Loading/>;
     if(count === 0) return <SoldOut/>;
     return (
     <React.Fragment>

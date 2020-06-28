@@ -119,6 +119,10 @@ body {
   /* background-color: #3a3f49!important; */
   background-color: #20232a!important;
 }
+.footrow {
+  display: flex;
+  flex-wrap: wrap;
+}
 .footer {
   display: block!important;
   color: #61dafb!important;
@@ -158,11 +162,96 @@ body {
   background-color: rgba(97, 218, 251,0.1);
   overflow: auto;
 }
-/* .title {
-  border-radius: 0.25rem;
-  color: #212529;
-  background-color: rgba(97, 218, 251,0.1);
-} */
 .time {
   color: white;
 }
+/* -------------------------------------------- */
+@media only screen and (max-width:620px) {
+  .myNav-top {
+    height: auto;
+    width: 100%;
+    display: block;
+  }
+  .App-logo {
+    display: none;
+  }
+  .ScrollUpButton__Container {
+    display: none;
+  }
+
+  .hideOnPhone {
+    display: none!important;
+  }
+
+
+  	/* Force table to not be like tables anymore */
+	table, thead, tbody, th, td, tr {
+		display: block; 
+	}
+	
+	/* Hide table headers (but not display: none;, for accessibility) */
+	thead tr { 
+		position: absolute;
+		top: -9999px;
+		left: -9999px;
+	}
+	
+	tr { border: 1px solid #ccc; }
+  
+  tr:nth-of-type(odd) { 
+    background: #eee; 
+  }
+  
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee; 
+		position: relative;
+		padding-left: 100%; 
+	}
+	td:before {
+		/* Now like a table header */
+		/* position: absolute; */
+		/* Top/left values mimic padding */
+		top: 6px;
+		left: 6px;
+		width: 45%; 
+		padding-right: 10px; 
+		white-space: nowrap;
+	}
+	/*
+	Label the data
+	*/
+	td:nth-of-type(1):before { content: "Title :"; }
+	td:nth-of-type(2):before { content: "Genre :"; }
+	td:nth-of-type(3):before { content: "Stock :"; }
+	td:nth-of-type(4):before { content: "Rate :"; }
+	td:nth-of-type(5):before { content: "Like"; }
+	td:nth-of-type(6):before { content: "Delete"; }
+
+  
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 {
+    display: contents!important;
+    word-wrap: break-word!important;
+    padding: 0px!important;
+  }
+  .row {
+    display: contents!important;
+  }
+  .center {
+    display: block!important;
+  }
+  .btn {
+    display: block!important;
+  }
+  /* .sticky-top {
+    position: relative!important;
+  } */
+
+  .myNav-top, .myNav-bottom {
+    background-color: black!important;
+  }
+}
+
+
+

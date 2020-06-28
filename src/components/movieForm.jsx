@@ -1,8 +1,9 @@
 import React from "react";
 import Joi from "joi-browser";
-import Form from "./common/form";
 import { getMovie, saveMovie } from "../services/movieService";
 import { getGenres } from "../services/genreService";
+import Loading from './common/loading';
+import Form from "./common/form";
 import MovieInfo from './movieInfo';
 
 class MovieForm extends Form {
@@ -14,6 +15,7 @@ class MovieForm extends Form {
       dailyRentalRate: ""
     },
     genres: [],
+    isLoading: false,
     errors: {}
   };
 
@@ -44,8 +46,10 @@ class MovieForm extends Form {
   };
 
   async componentDidMount() {
+    this.setState({isLoading: true});
     await this.populateGenres();
     await this.populateMovie();
+    this.setState({isLoading: false});
   };
 
   mapToViewModel(movie) {
@@ -75,6 +79,8 @@ class MovieForm extends Form {
 
   render() {
     const {match} = this.props;
+    const {isLoading} = this.state;
+    if(isLoading) return <Loading/>;
     return (
     <React.Fragment>
       {match.params.id === 'new' ? <h1>New Movie</h1> : <h1>Edit Movie</h1>}
