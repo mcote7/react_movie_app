@@ -16,7 +16,8 @@
     "react-router-scroll-top": "^0.2.1",
     "react-scripts": "1.1.4",
     "react-scroll-up-button": "^1.6.4",
-    "react-toastify": "^4.1.0"
+    "react-toastify": "^4.1.0",
+    "vanta": "^0.5.16"
   },
   "scripts": {
     "start": "react-scripts start",
