@@ -27,7 +27,7 @@ class Form extends Component {
     const {error} = Joi.validate(obj, schema);
     console.log({error})
     if(error && error.details[0].path.includes('email'))
-    error.details[0].message = '"Email" must be valid.    ( person@example.com )';
+    error.details[0].message = '"Email" must be valid. ( person@example.com )';
     if(error && error.details[0].path.includes('password'))
     error.details[0].message = '"Password" must be between 6 to 20 characters which contain at least one numeric digit, one uppercase and one lowercase letter.';
     return error ? error.details[0].message : null;
