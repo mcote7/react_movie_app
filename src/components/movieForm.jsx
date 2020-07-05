@@ -83,7 +83,7 @@ class MovieForm extends Form {
     if(isLoading) return <Loading/>;
     return (
     <React.Fragment>
-      {match.params.id === 'new' ? <h1>New Movie</h1> : <h1>Edit Movie</h1>}
+      {match.params.id === 'new' ? <h1 className="formTitle">New Movie</h1> : <h1 className="formTitle">Edit Movie</h1>}
       <div className="row">
         <div className="col-5">
           <form onSubmit={this.handleSubmit}>

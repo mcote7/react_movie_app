@@ -276,9 +276,13 @@ td {
   background-color: rgb(246, 248, 250)!important;
 }
 .twitterInput {
+  font-size: x-large!important;
+  color: hsl(210, 29%, 37%)!important;
+  caret-color: hsl(210, 29%, 37%)!important;
   border: none!important;
   background-color: rgb(246, 248, 250)!important;
 }
+
 
 
 
