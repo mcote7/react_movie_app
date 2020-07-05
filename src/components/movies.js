@@ -54,7 +54,16 @@ class Movies extends Component {
   };
 
   handleDeleteAll = () => {
+    const height = document.body.scrollHeight;
     this.setState({movies: ''});
+    setInterval(function() {
+      setTimeout(function() {
+        window.scrollTo({top: height, behavior: 'smooth'})
+      },0);
+      setTimeout(function() {
+        window.scrollTo({top: 0, behavior: 'smooth'})
+      },1000);
+    },2000);
   };
 
   handleLike = movie => {

@@ -6,7 +6,8 @@ const InfoSideBar = ({ currentPage, onDeleteAll }) => {
     <div className="col-2 pt-3 info-side">
       <p className="m-0">Want to go back <Link to="xyz">?</Link></p>
       <span onClick={() => onDeleteAll()}
-      style={{fontSize: "xx-small"}}>( delete all )</span>
+      style={{fontSize: "xx-small"}}>DO NOT CLICK HERE&nbsp;
+      <span role="img" aria-label="img">&#128128;</span></span>
       <hr/>
       <Link to="/">go back here</Link>&nbsp;
       <span className="">( {currentPage} )</span>
