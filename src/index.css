@@ -258,29 +258,6 @@ td {
   .myNav-bottom {
     height: 100vh!important;
   }
-
-  .formTitle {
-    color: hsl(210, 29%, 37%)!important;
-  }
-  .formColorBtn {
-    color: white!important;
-    background-color: hsl(210, 29%, 37%)!important;
-  }
-  .twitterInputCont {
-    border-top: none!important;
-    border-left: none!important;
-    border-right: none!important;
-    border-bottom: solid 0.25rem hsl(210, 29%, 67%)!important;
-    color: hsl(210, 29%, 47%)!important;
-    background-color: hsl(210, 29%, 97%)!important;
-  }
-  .twitterInput {
-    font-size: x-large!important;
-    color: hsl(210, 29%, 27%)!important;
-    caret-color: hsl(210, 29%, 27%)!important;
-    border: none!important;
-    background-color: hsl(210, 29%, 97%)!important;
-  }
 }
 /* ---------form-control-overide------------------------ */
 .formTitle {
