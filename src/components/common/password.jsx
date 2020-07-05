@@ -8,7 +8,7 @@ const Password = ({name, label, value, error, onChange, type, eye, onVisable}) =
           <input autoComplete="off"
           spellCheck="false" value={value}
           onChange={onChange} name={name}
-          id={name} type={type} className="form-control shadow-none twitterInput"/>
+          id={name} type={type} className="form-control shadow-none twitterInput m-0 p-0"/>
           <div onClick={onVisable}
           className="input-group-text twitterInput">
           <i className={eye} aria-hidden="true"></i></div>
