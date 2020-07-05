@@ -4,9 +4,9 @@ import {Link} from 'react-router-dom';
 const InfoSideBar = ({ currentPage, onDeleteAll }) => {
   return (
     <div className="col-2 pt-3 info-side">
-      <p className="m-0">Want to go back <Link to="xyz">?</Link></p>
+      <p className="m-0">Want to go back <Link to="xyz">?</Link></p>&rarr;
       <span onClick={() => onDeleteAll()}
-      style={{fontSize: "xx-small"}}>DO NOT CLICK HERE&nbsp;
+      style={{fontSize: "xx-small"}}>WINDOW TEST HERE&nbsp;
       <span role="img" aria-label="img">&#128128;</span></span>
       <hr/>
       <Link to="/">go back here</Link>&nbsp;
