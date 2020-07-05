@@ -56,7 +56,7 @@ class Form extends Component {
   renderButton(label) {
     return(
     <button disabled={this.validate()}
-    className="btn btn-primary col-6">{label}</button>);
+    className="btn col-6 formColorBtn">{label}</button>);
   };
 
   renderSelect(name, label, options) {

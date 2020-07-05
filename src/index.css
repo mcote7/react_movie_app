@@ -112,6 +112,7 @@ td {
   color: red;
   background-color: rgba(255, 0, 0,0.1);
   font-size: small;
+  border-top: solid 0.15rem red!important;
   border-bottom-left-radius: 0.25rem;
   border-bottom-right-radius: 0.25rem;
 }
@@ -149,7 +150,7 @@ td {
 .grey {
   color: rgb(152, 164, 175);
 }
-.form-control {
+/* .form-control {
   background-color: rgb(246, 248, 250)!important;
 }
 .form-control:hover {
@@ -157,7 +158,7 @@ td {
 }
 .form-control:focus {
   background-color: rgba(97, 218, 251,0.1)!important;
-}
+} */
 .info-register {
   text-align: center;
   border-radius: 0.25rem;
@@ -258,6 +259,27 @@ td {
     height: 100vh!important;
   }
 }
+/* ---------form-control-overide------------------------ */
+.formTitle {
+  color: hsl(210, 29%, 37%)!important;
+}
+.formColorBtn {
+  color: white!important;
+  background-color: hsl(210, 29%, 37%)!important;
+}
+.twitterInputCont {
+  border-top: none!important;
+  border-left: none!important;
+  border-right: none!important;
+  border-bottom: solid 0.25rem hsl(210, 29%, 67%)!important;
+  color: hsl(210, 29%, 47%)!important;
+  background-color: rgb(246, 248, 250)!important;
+}
+.twitterInput {
+  border: none!important;
+  background-color: rgb(246, 248, 250)!important;
+}
+
 
 
 
