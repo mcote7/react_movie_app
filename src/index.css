@@ -260,6 +260,9 @@ td {
   }
 }
 /* ---------form-control-overide------------------------ */
+.form-control {
+  height: auto!important;
+}
 .formTitle {
   color: hsl(210, 29%, 37%)!important;
 }
