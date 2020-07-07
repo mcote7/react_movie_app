@@ -2,7 +2,7 @@ import React from 'react';
 
 const Password = ({name, label, value, error, onChange, type, eye, onVisable}) => {
   return (
-      <div className="form-control twitterInputCont mb-2">
+      <div className="form-control twitterInputCont mb-3">
         <label htmlFor={name}>{label}</label>
         <div className="input-group-prepend">
           <input autoComplete="off"

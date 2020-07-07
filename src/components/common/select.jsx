@@ -2,7 +2,7 @@ import React from "react";
 
 const Select = ({ name, label, options, error, ...rest }) => {
   return (
-    <div className="form-control twitterInputCont mb-2">
+    <div className="form-control twitterInputCont mb-3">
       <label htmlFor={name}>{label}</label>
       <select name={name} id={name} {...rest} className="form-control shadow-none twitterInput m-0 p-0">
         <option value="" />
