@@ -277,7 +277,8 @@ td {
   border-right: none!important;
   border-bottom: solid 0.25rem hsl(210, 29%, 87%)!important;
   color: hsl(210, 29%, 67%)!important;
-  background-color: hsl(210, 29%, 97%)!important;
+  /* background-color: hsl(210, 29%, 97%)!important; */
+  background-color: white!important;
 }
 .twitterInputCont:focus-within {
   color: hsl(210, 29%, 37%)!important;
@@ -290,9 +291,10 @@ td {
 .twitterInput {
   font-size: x-large!important;
   color: hsl(210, 29%, 27%)!important;
-  caret-color: hsl(210, 29%, 27%)!important;
+  caret-color: hsl(210, 29%, 27%)!important;;
   border: none!important;
-  background-color: hsl(210, 29%, 97%)!important;
+  /* background-color: hsl(210, 29%, 97%)!important; */
+  background-color: white!important;
 }
 /* autofill color fix */
 input:-webkit-autofill,
