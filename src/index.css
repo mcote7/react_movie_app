@@ -64,6 +64,13 @@ td {
   border-bottom: solid;
   background-color: rgba(255, 0, 0,0.05);
 }
+.info-register {
+  text-align: center;
+  border-radius: 0.25rem;
+  color: #212529;
+  background-color: rgba(97, 218, 251,0.1);
+  overflow: auto;
+}
 /* ----------nav bar component------------------------ */
 .myNav-top {
   height: 7.6vh;
@@ -141,17 +148,10 @@ td {
 .grey {
   color: rgb(152, 164, 175);
 }
-.info-register {
-  text-align: center;
-  border-radius: 0.25rem;
-  color: #212529;
-  background-color: rgba(97, 218, 251,0.1);
-  overflow: auto;
-}
 .time {
   color: white;
 }
-/* -------------------------------------------- */
+/* ------------For Mobile-------------------------------- */
 @media only screen and (max-width:620px) {
   .myNav-top {
     height: auto;
@@ -241,6 +241,8 @@ td {
     height: 100vh!important;
   }
 }
+/* END @media rule set */
+
 /* ---------form-control-overide------------------------ */
 .form-control {
   height: auto!important;
