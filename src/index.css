@@ -107,15 +107,6 @@ td {
   text-decoration: none;
   border-bottom: solid;
 }
-/* -------------form--------------- */
-.errorMess {
-  color: red;
-  background-color: rgba(255, 0, 0,0.1);
-  font-size: small;
-  border-top: solid 0.15rem red!important;
-  border-bottom-left-radius: 0.25rem;
-  border-bottom-right-radius: 0.25rem;
-}
 /* ---------footer------------------ */
 .myNav-bottom {
   height: 93vh;
@@ -150,15 +141,6 @@ td {
 .grey {
   color: rgb(152, 164, 175);
 }
-/* .form-control {
-  background-color: rgb(246, 248, 250)!important;
-}
-.form-control:hover {
-  background-color: rgba(97, 218, 251,0.1)!important;
-}
-.form-control:focus {
-  background-color: rgba(97, 218, 251,0.1)!important;
-} */
 .info-register {
   text-align: center;
   border-radius: 0.25rem;
@@ -303,6 +285,15 @@ input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px hsl(210, 29%, 97%) inset !important;
   box-shadow: 0 0 0 30px hsl(210, 29%, 97%) inset !important;
+}
+/* form error message */
+.errorMess {
+  color: red;
+  background-color: rgba(255, 0, 0,0.1);
+  font-size: small;
+  border-top: solid 0.15rem red!important;
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
 }
 /* -------------------------------------------------------------------- */
 
