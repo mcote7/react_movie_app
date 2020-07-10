@@ -5,7 +5,7 @@ const Password = ({name, label, value, error, onChange, type, eye, onVisable}) =
       <div className="form-control twitterInputCont mb-3">
         <label htmlFor={name}>{label}</label>
         <div className="input-group-prepend">
-          <input autoComplete="off"
+          <input autoComplete="off" aria-autocomplete="none"
           spellCheck="false" value={value}
           onChange={onChange} name={name}
           id={name} type={type} className="form-control shadow-none twitterInput m-0 p-0"/>
