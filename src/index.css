@@ -270,14 +270,23 @@ td {
   color: white!important;
   background-color: hsl(210, 29%, 37%)!important;
 }
+/*  */
 .twitterInputCont {
   border-top: none!important;
   border-left: none!important;
   border-right: none!important;
-  border-bottom: solid 0.25rem hsl(210, 29%, 67%)!important;
-  color: hsl(210, 29%, 47%)!important;
+  border-bottom: solid 0.25rem hsl(210, 29%, 87%)!important;
+  color: hsl(210, 29%, 67%)!important;
   background-color: hsl(210, 29%, 97%)!important;
 }
+.twitterInputCont:focus-within {
+  color: hsl(210, 29%, 37%)!important;
+  border-bottom: solid 0.25rem hsl(210, 29%, 37%)!important;
+}
+.twitterInputCont:focus-within label::after {
+  content: " . . ."!important;
+}
+/*  */
 .twitterInput {
   font-size: x-large!important;
   color: hsl(210, 29%, 27%)!important;
@@ -285,7 +294,7 @@ td {
   border: none!important;
   background-color: hsl(210, 29%, 97%)!important;
 }
-/*  */
+/* autofill color fix */
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -293,7 +302,7 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px hsl(210, 29%, 97%) inset !important;
   box-shadow: 0 0 0 30px hsl(210, 29%, 97%) inset !important;
 }
-/*  */
+/* -------------------------------------------------------------------- */
 
 
 
