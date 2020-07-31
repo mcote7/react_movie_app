@@ -88,7 +88,7 @@ td {
   cursor: pointer;
   color: white;
   text-decoration: none;
-  border-bottom: none;
+  border-bottom: transparent;
 }
 .navImg {
   height: 5vh!important;
@@ -101,6 +101,7 @@ td {
 .navLinks {
   color: #61dafb;
   transition: 0.1s;
+  border-bottom: transparent;
 }
 .navLinks:hover {
   cursor: pointer;

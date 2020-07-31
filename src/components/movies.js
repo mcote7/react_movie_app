@@ -14,7 +14,8 @@ import InfoSideBar from './common/infoSideBar';
 import Pagination from './common/pagination';
 import SoldOut from './common/soldOut';
 import _ from 'lodash';
-
+import { PushSpinner } from "react-spinners-kit";
+import DotLoader from "react-spinners/DotLoader";
 
 class Movies extends Component {
   state = { 
@@ -25,7 +26,7 @@ class Movies extends Component {
     searchQuery: "",
     selectedGenre: null,
     sortColumn: { path: 'title', order: 'asc' },
-    isLoading: false
+    isLoading: true
   };
 
   async componentDidMount() {
@@ -134,7 +135,7 @@ class Movies extends Component {
     const {user} = this.props;
     const {totalCount, data: movies} = this.getPagedData();
     const movLen = movies.length;
-    if(isLoading) return <Loading/>;
+    if(isLoading) return <DotLoader size={150} color={"#123abc"} loading={isLoading}/>;
     if(count === 0) return <SoldOut/>;
     return (
     <React.Fragment>
