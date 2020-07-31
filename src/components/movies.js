@@ -5,7 +5,7 @@ import {getMovies, deleteMovie} from '../services/movieService';
 import {getGenres} from '../services/genreService';
 import {paginate} from '../utilitys/paginate';
 import {removeThe} from '../utilitys/removeThe';
-import Loading from './common/loading';
+// import Loading from './common/loading';
 import ListGroup from './common/listGroup';
 import InfoTopBar from './infoTopBar';
 import SearchBox from './common/searchbox';
@@ -14,7 +14,7 @@ import InfoSideBar from './common/infoSideBar';
 import Pagination from './common/pagination';
 import SoldOut from './common/soldOut';
 import _ from 'lodash';
-import { PushSpinner } from "react-spinners-kit";
+// import { PushSpinner } from "react-spinners-kit";
 import DotLoader from "react-spinners/DotLoader";
 
 class Movies extends Component {
@@ -135,7 +135,7 @@ class Movies extends Component {
     const {user} = this.props;
     const {totalCount, data: movies} = this.getPagedData();
     const movLen = movies.length;
-    if(isLoading) return <DotLoader size={150} color={"#123abc"} loading={isLoading}/>;
+    if(isLoading) return <DotLoader size={150} color={"#61dafb"} loading={isLoading}/>;
     if(count === 0) return <SoldOut/>;
     return (
     <React.Fragment>
